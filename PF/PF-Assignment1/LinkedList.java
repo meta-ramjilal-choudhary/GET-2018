@@ -18,6 +18,10 @@ public class LinkedList {
 			this.data = d;
 			this.next = null;
 		}
+		Node(Node n, int d){
+			this.data = d;
+			this.next = n;
+		}
 	}
 	
 	/*
@@ -62,9 +66,7 @@ public class LinkedList {
 	 * @return true if Stack is empty otherwise false
 	 */
 	public boolean isEmpty() {
-		if(root ==  null)
-			return true;
-		return false;
+		return (root ==  null);
 	}
 
 	
