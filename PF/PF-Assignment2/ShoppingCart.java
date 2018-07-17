@@ -1,0 +1,225 @@
+/*
+ * Code by __E18/1025__
+ * Shopping Cart for item 
+ */
+
+public class ShoppingCart {
+	private Item firstItem ;
+	private Item lastItem;
+	private double total;
+	
+	ShoppingCart(){
+		this.firstItem = null;
+		this.lastItem = null;
+		this.total = 0.0;
+	}
+	
+	/*
+	 * Enum for Promotion code 
+	 */
+	enum PromotionEnum{
+		SkyBag("sky10", "15/07/2018", "20/07/2018"),
+		Algo_Book("algo10", "15/07/2018", "20/07/2018"),
+		Laptop("laptop10", "15/07/2018", "20/07/2018"),
+		Samsung("samsung10", "15/07/2018", "20/07/2018");
+		
+		private String code, startDate, endDate;
+		
+		/*
+		 * @param   nothing
+		 * @return  code 
+		 */
+		public String getCode() {
+			return this.code;
+		}
+		
+		/*
+		 * @param   nothing
+		 * @return  start date 
+		 */
+		public String getStartDate() {
+			return this.startDate;
+		}
+		
+		/*
+		 * @param   nothing
+		 * @return  end date
+		 */
+		public String getEndDate() {
+			return this.endDate;
+		}
+		
+		private PromotionEnum(String code, String startDate, String endDate) {
+			this.code = code;
+			this.startDate = startDate;
+			this.endDate = endDate;
+		}
+	}
+	
+	static class Item{
+		private long itemID;
+		private String itemName;
+		private double price;
+		private long quantity;
+		private Item next;
+		
+		Item(long itemID, String itemName, double price, long quantity){
+			this.itemID = itemID;
+			this.itemName = itemName;
+			this.price = price;
+			this.quantity = quantity;
+			this.next = null;
+		}
+	}
+	
+	/*
+	 * @param   item id (int)
+	 * @return  item price
+	 */
+	public double getPrice(long itemID) {
+		Item item;
+		item = this.searchItem(itemID);
+		return item.price;
+	}
+	
+	/*
+	 * @param   item id (int), price of item (double)
+	 * @return  nothing
+	 * Update Item price after discount
+	 */
+	public void setPrice(long itemID, double price) {
+		Item item;
+		item = this.searchItem(itemID);
+		item.price = price;
+	}
+	
+	/*
+	 * @param   nothing
+	 * @return  true if Shopping Cart is Empty otherwise false
+	 */
+	public boolean isEmpty() {
+		if (this.firstItem == null)
+			return true;
+		return false;
+	}
+	
+	/*
+	 * @param   item name (string), item price (double), item quantity(long)
+	 * @return  nothing
+	 * Add item into the Shopping Cart list
+	 */
+	public void add(long itemID, String itemName, double price, long quantity) {
+		Item newItem = new Item(itemID, itemName, price, quantity);
+		total += price * (double)quantity;
+		if(isEmpty()) {
+			firstItem = newItem;
+			lastItem = newItem;
+		}
+		else {
+			lastItem.next = newItem;
+			lastItem = lastItem.next;
+		}
+	}
+	
+	/*
+	 * @param   Item id 
+	 * @return  nothing
+	 * Remove Item from list of Shopping cart
+	 */
+	public void remove(long itemID) {
+		Item it = firstItem;
+		Item pre = firstItem;
+		while(it != null) {
+			if(it.itemID == itemID)
+				break;
+			pre = it;
+			it = it.next;
+		}
+		if(it == firstItem) 
+			firstItem = firstItem.next;
+		else if(it == lastItem) {
+			lastItem = pre;
+			pre.next = null;
+		}
+		else 
+			pre.next = it.next;
+		System.out.println("Item id-" + it.itemID + " Removed !");
+		it = null;
+	}
+	
+	/*
+	 * @param   item-id (long)
+	 * @return  Item reference if it is found otherwise null
+	 */
+	public Item searchItem(long item_id) {
+		Item it = firstItem;
+		while(it != null) {
+			if(it.itemID == item_id)
+				return it;
+			it = it.next;
+		}
+		return null;
+	}
+	
+	/*
+	 * @param   item-id(long), change ("+" or "-")(String), Quantity(long)
+	 * @return  nothing
+	 * + used for Increase Quantity
+	 * - used for Decrease Quantity
+	 */
+	public void changeQuantity(long itemID, String change, long quantity) {
+		Item item = this.searchItem(itemID);
+		if (item == null)
+			System.out.println("Item is not found !");
+		else {
+			long newQuantity = (change.equals("+") ? quantity : quantity*(-1)) ;
+			long preQuantity = item.quantity;
+			item.quantity += newQuantity;
+			if(item.quantity < 0) {
+				newQuantity = preQuantity*(-1);
+				item.quantity = 0;
+			}
+			total += item.price * (double)newQuantity;
+			System.out.println("Item id-" + itemID + " Quantity is Changed !");
+			if(item.quantity == 0)
+				this.remove(item.itemID);
+		}
+	}
+	
+	
+	/*
+	 * @param   nothing
+	 * @return  nothing
+	 * Print list of all items present in Shopping Cart
+	 */
+	public void itemList() {
+		Item it = firstItem;
+		while(it != null) {
+			System.out.println(it.itemID + "---" + it.itemName + "---" + it.price + "---" + it.quantity );
+			it = it.next;
+		}
+	}
+	
+	public double totalAmountPayable() {
+		return this.total;
+	}
+	
+	/*
+	public static void main(String args[]) {
+		ShoppingCart shopCart = new ShoppingCart();
+		shopCart.add(1, "SkyBag", 1156.36, 1);
+		shopCart.add(2, "Algo Book", 560.36, 1);
+		shopCart.add(3, "Laptop", 32156.36, 1);
+		shopCart.add(4, "Samsung S8", 55556.36, 1);
+		shopCart.add(5, "iPhone", 105556.36, 1);
+		
+		shopCart.itemList();
+		System.out.println(shopCart.totalAmountPayable());
+		
+		shopCart.changeQuantity(2, "-", 2);
+		
+		shopCart.itemList();
+		System.out.println(shopCart.totalAmountPayable());
+	}
+	*/
+}
