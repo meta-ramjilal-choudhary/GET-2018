@@ -55,10 +55,7 @@ public class Stack {
 	 * @return  true if Stack is Empty otherwise false
 	 */
 	public boolean isEmpty() {
-		if (topElementIndex == -1)
-			return true;
-		else
-			return false;
+		return (topElementIndex == -1);
 	}
 	
 	public static void main(String args[]) {
