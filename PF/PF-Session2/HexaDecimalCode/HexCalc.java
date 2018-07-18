@@ -82,18 +82,7 @@ public class HexCalc implements ArithmeticCalc {
 	 */
 	public int compare(String number1, String number2) {
 		
-		long integerNumber1 = Long.parseLong(this.anyBaseToDecimal(number1));
-		long integerNumber2 = Long.parseLong(this.anyBaseToDecimal(number2));
-		
-		if (integerNumber1 > integerNumber2) {
-			return 1;
-		}
-		else if(integerNumber1 < integerNumber2) {
-			return -1;
-		}
-		else {
-			return 0;
-		}
+		return number1.compareTo(number2);
 	}
 	
 	/*
