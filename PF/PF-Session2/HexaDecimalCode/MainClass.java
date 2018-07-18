@@ -35,7 +35,15 @@ public class MainClass {
 	  		 		 }
 	  		 		 break;
 			case 5 : int comp = hex.compare(number1, number2);
-	  				 System.out.println("Comparesion : " + comp);
+	  				 if(comp > 0) {
+						 System.out.println("number1 > number2");
+					 }
+					 else if(comp < 0) {
+						 System.out.println("number1 < number2");
+					 }
+					 else {
+						 System.out.println("number1 == number2");
+					 }
 	  				 break;		 
 			default : System.out.println("Invalid Input!");
 					  break;
