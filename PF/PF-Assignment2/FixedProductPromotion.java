@@ -33,11 +33,10 @@ public class FixedProductPromotion extends ShoppingCart implements Promotion {
 		
 		priceAfterFixedDiscount = price - (price * (this.fixedDiscount.get(itemID)/100.0));
 		
-		if (this.isPromotionApplicable(itemID, code)) {
+		if (this.isPromotionApplicable( code)) {
 			
 			double priceAfterPromoDiscount ;
 			priceAfterPromoDiscount = price - (price *(this.getPromoDiscount(code)/100.0));
-			
 			if (priceAfterFixedDiscount < priceAfterPromoDiscount) {
 				this.setPrice(itemID, priceAfterFixedDiscount);
 			}
@@ -60,12 +59,14 @@ public class FixedProductPromotion extends ShoppingCart implements Promotion {
 		discount.put("laptop10", 25.00);
 		discount.put("samsung10", 40.00);
 	
-		if(discount.containsKey(code)) {
-			return discount.get(code);
-		}
-		else {
-			return noDiscount;
-		}
+		return (discount.containsKey(code) ? discount.get(code) : 0.0);
+		
+// 		if(discount.containsKey(code)) {
+// 			return discount.get(code);
+// 		}
+// 		else {
+// 			return noDiscount;
+// 		}
 		
 	}
 	
@@ -75,14 +76,14 @@ public class FixedProductPromotion extends ShoppingCart implements Promotion {
 	 */
 	public double getFixedDiscount(long itemID) {
 		
-		double noDiscount = 0.0;
+		return ((this.fixedDiscount.containsKey(itemID)) ? this.fixedDiscount.get(itemID) : 0.0);
 		
-		if(this.fixedDiscount.containsKey(itemID)) {
-			return this.fixedDiscount.get(itemID);
-		}
-		else {
-			return noDiscount;
-		}
+// 		if(this.fixedDiscount.containsKey(itemID)) {
+// 			return this.fixedDiscount.get(itemID);
+// 		}
+// 		else {
+// 			return noDiscount;
+// 		}
 		
 	}
 	
@@ -101,7 +102,7 @@ public class FixedProductPromotion extends ShoppingCart implements Promotion {
 	 * @param   item id (int), promo code (String)
 	 * @return  true if promo code applicable otherwise false
 	 */
-	public boolean isPromotionApplicable (long itemID, String code) {
+	public boolean isPromotionApplicable (String code) {
 		PromotionEnum [] promoEnum = PromotionEnum.values();
 		for(PromotionEnum promo : promoEnum) {
 			if(code.equals(promo.getCode())) {
@@ -142,7 +143,7 @@ public class FixedProductPromotion extends ShoppingCart implements Promotion {
 		prodPromo.setFixedDiscount(4, 20.0);
 		prodPromo.setFixedDiscount(5, 15.0);
 	
-		System.out.println(prodPromo.isPromotionApplicable(1, "sky10"));
+		System.out.println(prodPromo.isPromotionApplicable("sky10"));
 		
 		System.out.println(prodPromo.getFixedDiscount(5));
 		
