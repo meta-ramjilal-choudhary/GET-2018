@@ -11,7 +11,7 @@ public interface ArithmeticCalc {
 	
 	public int compare(String number1, String number2);
 	
-	public String anyBaseToDecimal(String number);
+	public int anyBaseToDecimal(String number);
 	
 	public String decimalToAnyBase(String number);
 	
