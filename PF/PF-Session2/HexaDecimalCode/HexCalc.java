@@ -10,16 +10,33 @@ public class HexCalc implements ArithmeticCalc {
 	}
 	
 	/*
+	 * Validate whether String is hexadecimal or not
+	 * @param   string - Hexadecimal string
+	 * @return  true if string hexadecimal otherwise false
+	 */
+	public boolean validHex(String string) {
+		for (int i=0; i<string.length(); i++) {
+			if ( string.charAt(i) < 48 || ( string.charAt(i) > 57 && string.charAt(i) < 65 ) || string.charAt(i) > 90 ) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/*
 	 * @param   two hexadecimal string number
 	 * @return  Addition of two hexadecimal number in string form
 	 */
 	public String add(String number1, String number2) {
-		long integerNumber1 = Long.parseLong(this.anyBaseToDecimal(number1));
-		long integerNumber2 = Long.parseLong(this.anyBaseToDecimal(number2));
 		
-		long resultOfAddition = integerNumber1 + integerNumber2;
+		return this.decimalToAnyBase(this.anyBaseToDecimal(number1) + this.anyBaseToDecimal(number2));
 		
-		return this.decimalToAnyBase(Long.toString(resultOfAddition));
+//		long integerNumber1 = Long.parseLong(this.anyBaseToDecimal(number1));
+//		long integerNumber2 = Long.parseLong(this.anyBaseToDecimal(number2));
+//		
+//		long resultOfAddition = integerNumber1 + integerNumber2;
+//		
+//		return this.decimalToAnyBase(Long.toString(resultOfAddition));
 		
 	}
 	
@@ -29,15 +46,10 @@ public class HexCalc implements ArithmeticCalc {
 	 */
 	public String subtract(String number1, String number2) {
 		
-		long integerNumber1 = Long.parseLong(this.anyBaseToDecimal(number1));
-		long integerNumber2 = Long.parseLong(this.anyBaseToDecimal(number2));
-		
-		long resultOfSubtraction = integerNumber1 - integerNumber2;
-		resultOfSubtraction = (resultOfSubtraction > 0) ? resultOfSubtraction : (resultOfSubtraction * (-1));
-		
-		String resultString = "-";
-		
-		resultString += this.decimalToAnyBase(Long.toString(resultOfSubtraction));
+		int hexSubtract = this.anyBaseToDecimal(number1) - this.anyBaseToDecimal(number2);
+		hexSubtract = (hexSubtract > 0) ? hexSubtract : hexSubtract *(-1) ;
+		String resultString = (hexSubtract > 0) ? "" : "-";
+		resultString += this.decimalToAnyBase(hexSubtract);
 		return resultString;
 		
 	}
@@ -48,12 +60,7 @@ public class HexCalc implements ArithmeticCalc {
 	 */
 	public String multiply(String number1, String number2) {
 		
-		long integerNumber1 = Long.parseLong(this.anyBaseToDecimal(number1));
-		long integerNumber2 = Long.parseLong(this.anyBaseToDecimal(number2));
-		
-		long resultOfMultiplication = integerNumber1 * integerNumber2;
-		
-		return this.decimalToAnyBase(Long.toString(resultOfMultiplication));
+		return this.decimalToAnyBase(this.anyBaseToDecimal(number1) * this.anyBaseToDecimal(number2));
 		
 	}
 	
@@ -62,23 +69,23 @@ public class HexCalc implements ArithmeticCalc {
 	 * @return  Division of Two hexadecimal number
 	 */
 	public String divide(String number1, String number2) throws ArithmeticException {
-		long integerNumber1 = Long.parseLong(this.anyBaseToDecimal(number1));
-		long integerNumber2 = Long.parseLong(this.anyBaseToDecimal(number2));
+		int integerNumber1 = this.anyBaseToDecimal(number1);
+		int integerNumber2 = this.anyBaseToDecimal(number2);
 		
 		if(integerNumber2 == 0) {
 			throw new ArithmeticException();
 		}
 		
-		long resultOfDivision = integerNumber1 / integerNumber2;
+		int resultOfDivision = integerNumber1 / integerNumber2;
 		
-		return this.decimalToAnyBase(Long.toString(resultOfDivision));
+		return this.decimalToAnyBase(resultOfDivision);
 	}
 	
 	/*
 	 * @param   Two hexadecimal number string
-	 * @return  -  0  if both are equal
-	 * 			-  1  if number1 > number2
-	 * 			- -1  if number1 < number2
+	 * @return  -   0  if both are equal
+	 * 			-  >0  if number1 > number2
+	 * 			-  <0  if number1 < number2
 	 */
 	public int compare(String number1, String number2) {
 		
@@ -90,7 +97,7 @@ public class HexCalc implements ArithmeticCalc {
 	 * @return  decimal number string
 	 * Convert hexadecimal to decimal number
 	 */
-	public String anyBaseToDecimal(String number) {
+	public int anyBaseToDecimal(String number) {
 		
 		int stringLength = number.length();   
 		int power = 0;
@@ -106,7 +113,8 @@ public class HexCalc implements ArithmeticCalc {
 			}
 			power ++;
 		}
-		return Integer.toString(integerNumber);
+		return integerNumber;
+		//return Integer.toString(integerNumber);
 	}
 	
 	/*
@@ -114,12 +122,11 @@ public class HexCalc implements ArithmeticCalc {
 	 * @return  Hexadecimal string 
 	 * Convert decimal to hexadecimal number
 	 */
-	public String decimalToAnyBase(String number) {
+	public String decimalToAnyBase(int number) {
 		
-		int integerNumber = Integer.parseInt(number);
 		StringBuilder resultString = new StringBuilder("");
 		
-		int quotient = integerNumber;
+		int quotient = number;
 		int remainder;
 		char character ;
 		
