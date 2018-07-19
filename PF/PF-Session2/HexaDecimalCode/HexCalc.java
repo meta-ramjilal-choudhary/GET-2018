@@ -92,7 +92,6 @@ public class HexCalc implements ArithmeticCalc {
 	 */
 	public String anyBaseToDecimal(String number) {
 		
-		int base = this.BASE;
 		int stringLength = number.length();   
 		int power = 0;
 		int integerNumber = 0;
@@ -100,10 +99,10 @@ public class HexCalc implements ArithmeticCalc {
 			char character = number.charAt(i);
 			int ascii = (int) character ;
 			if( ascii >= 65 && ascii <= 70 ) {
-				integerNumber += (10 + ( ascii - 65 ))* Math.pow(base, power);
+				integerNumber += (10 + ( ascii - 65 ))* Math.pow(this.BASE, power);
 			}
 			else {
-				integerNumber += (ascii - 48)*Math.pow(base, power);
+				integerNumber += (ascii - 48)*Math.pow(this.BASE, power);
 			}
 			power ++;
 		}
@@ -117,8 +116,6 @@ public class HexCalc implements ArithmeticCalc {
 	 */
 	public String decimalToAnyBase(String number) {
 		
-		int base = this.BASE;
-		
 		int integerNumber = Integer.parseInt(number);
 		StringBuilder resultString = new StringBuilder("");
 		
@@ -128,8 +125,8 @@ public class HexCalc implements ArithmeticCalc {
 		
 		while (quotient > 0) {
 			
-			remainder = quotient % base;
-			quotient = quotient / base;
+			remainder = quotient % this.BASE;
+			quotient = quotient / this.BASE;
 			
 			if(remainder > 9) {
 				character = (char)(remainder + 55);
