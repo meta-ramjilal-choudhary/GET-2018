@@ -45,7 +45,7 @@ public class Process {
 	 */
 	public void setTurnAroundTime() {
 		
-		this.turnAroundTime = (this.completionTime > this.arrivalTime) ? (this.completionTime - this.arrivalTime) : (this.arrivalTime - this.completionTime) ;
+		this.turnAroundTime = this.completionTime - this.arrivalTime ;
 		
 	}
 	
@@ -66,7 +66,7 @@ public class Process {
 	 */
 	public void setWaitingTime() {
 		
-		this.waitingTime = (this.turnAroundTime > this.burstTime) ? (this.turnAroundTime - this.burstTime) : (this.burstTime - this.turnAroundTime) ;
+		this.waitingTime = this.turnAroundTime - this.burstTime;
 		
 	}
 	
