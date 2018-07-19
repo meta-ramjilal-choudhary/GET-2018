@@ -16,13 +16,13 @@ public class FCFSScheduling extends Process{
 	 * @param   arrivalBurstTime - Two dimensional array with arrival time and burst time
 	 * @return  nothing
 	 */
-	public void computationOFTimes(Process process[], int numberOfProcess, long arrivalBurstTime[][]) {
+	public void computationOFTimes(Process process[], long arrivalBurstTime[][]) {
 		
 		long preProcessCT = 0;
 		long totalWaitingTime = 0;
 		long maximumWaitingTime = 0;
 		
-		for(int i=0; i<numberOfProcess; i++) {
+		for(int i=0; i<process.length; i++) {
 			
 			process[i] = new Process( arrivalBurstTime[i][0], arrivalBurstTime[i][1] );
 			process[i].setCompletionTime(preProcessCT);
@@ -38,7 +38,7 @@ public class FCFSScheduling extends Process{
 			maximumWaitingTime = (maximumWaitingTime >= process[i].getWaitingTime()) ? maximumWaitingTime : process[i].getWaitingTime();
 		}
 		
-		this.setAverageWaitingTime(numberOfProcess, totalWaitingTime);
+		this.setAverageWaitingTime(process.length, totalWaitingTime);
 		this.setMaximumWaitingTime(maximumWaitingTime);
 	}
 	
@@ -81,9 +81,9 @@ public class FCFSScheduling extends Process{
 	 * @param process - Array of Process objects 
 	 * @param numberOfProcess - Total number of Process
 	 */
-	public void listProcess(Process process[], int numberOfProcess) {
+	public void listProcess(Process process[]) {
 		System.out.println("Process\t  C.T.\tT.A.T\tW.T");
-		for (int i=0; i<numberOfProcess; i++) {
+		for (int i=0; i<process.length; i++) {
 			System.out.println("P-"+ (i+1) + "\t  " + process[i].getCompletionTime() + "  \t" + process[i].getTurnAroundTime() + "    \t" + process[i].getWaitingTime());
 		}
 	}
@@ -107,9 +107,9 @@ public class FCFSScheduling extends Process{
 		
 		Process process[] = new Process[numberOfProcess];
 		
-		fcfs.computationOFTimes(process, numberOfProcess, arrivalBurstTime);
+		fcfs.computationOFTimes(process, arrivalBurstTime);
 	
-		fcfs.listProcess(process, numberOfProcess);
+		fcfs.listProcess(process);
 		
 		System.out.println("\nAverage Waiting Time: "+fcfs.getAverageWaitingTime());
 		System.out.println("\nMaximum Waiting Time: "+fcfs.getMaximumWaitingTime());
