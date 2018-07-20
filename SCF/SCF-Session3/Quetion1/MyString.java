@@ -7,7 +7,7 @@ public class MyString {
 	
 	/*
 	 * Computer length of a String
-	 * @param   nothing
+	 * @param   string - string input
 	 * @return  length of string (int)
 	 */
 	public int strlen(String string) {
@@ -78,6 +78,9 @@ public class MyString {
 			}
 			else if(ascii >= 97 && ascii <= 122){
 				newString += (char)(ascii - 32);
+			}
+			else{
+				newString += (char)ascii;
 			}
 		}
 		return newString;
