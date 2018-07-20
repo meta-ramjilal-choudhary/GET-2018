@@ -73,10 +73,10 @@ public class MyString {
 		for(int i=0; i<len; i++) {
 			char character = string.charAt(i);
 			int ascii = (int)character;
-			if(ascii <97) {
+			if(ascii >= 65 && ascii <= 90) {
 				newString += (char)(ascii + 32);
 			}
-			else {
+			else if(ascii >= 97 && ascii <= 122){
 				newString += (char)(ascii - 32);
 			}
 		}
