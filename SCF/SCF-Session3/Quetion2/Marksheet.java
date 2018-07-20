@@ -68,8 +68,7 @@ public class Marksheet {
 				totalStudentPassed ++;
 			}
 		}
-		double percentage = (double)totalStudentPassed / (double)this.grades.length;
-		percentage *= 100.0;
+		double percentage = ((double)totalStudentPassed / (double)this.grades.length) * 100.0;
 		return Math.round(percentage * 100.0) / 100.0;
 	}
 }
