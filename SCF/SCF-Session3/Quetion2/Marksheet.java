@@ -22,11 +22,11 @@ public class Marksheet {
 	 */
 	public double averageOfAllGrades() throws ArithmeticException{
 		
-		double totalGrades = 0.0;
+		double gradesTotal = 0.0;
 		for(int index=0; index < this.grades.length; index++) {
-			totalGrades += this.grades[index];
+			gradesTotal += this.grades[index];
 		}
-		double avgGrades =  totalGrades / (double)this.grades.length;
+		double avgGrades =  gradesTotal / (double)this.grades.length;
 		return Math.round(avgGrades* 100.0)/100.0;
 	}
 	
