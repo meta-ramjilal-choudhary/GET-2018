@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class QueenProblemTest {
 
 	@Test
-	void test3() {
+	public void test3() {
 		int n=3;
 		int board[][] = new int[n][n];
 		for(int i=0;i<n;i++) {
@@ -15,11 +15,11 @@ class QueenProblemTest {
 			}
 		}
 		QueenProblem qp = new QueenProblem();
-		Assertions.assertTrue(qp.nQueen(board, 0, n), "Wrong answer");
+		Assertions.assertFalse(qp.nQueen(board, 0, n), "Wrong answer");
 	}
 	
 	@Test
-	void test4() {
+	public void test4() {
 		int n=4;
 		int board[][] = new int[n][n];
 		for(int i=0;i<n;i++) {
@@ -40,7 +40,7 @@ class QueenProblemTest {
 	}
 	
 	@Test
-	void test8() {
+	public void test8() {
 		int n=8;
 		int board[][] = new int[n][n];
 		for(int i=0;i<n;i++) {
