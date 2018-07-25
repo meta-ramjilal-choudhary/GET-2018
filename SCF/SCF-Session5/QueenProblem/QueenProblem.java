@@ -14,32 +14,26 @@ public class QueenProblem {
 	 * @return true if eligible otherwise false
 	 */
 	public boolean isSafe(int board[][], int row, int col, int dimension) throws ArrayIndexOutOfBoundsException{
+		
+		//Check Whether Present column has Queen or not
 		for(int i=0;i<row;i++) {
 			if(board[i][col] == 1) {
 				return false;
 			}
 		}
 		
-		int i = row-1;
-		int j = col-1;
-		
-		while(i>=0 && j>=0) {
+		//Check Whether right upper diagonal has Queen or not
+		for(int i=row-1, j=col-1; i>=0 && j>=0; i--, j--) {
 			if(board[i][j] == 1) {
 				return false;
 			}
-			i--;
-			j--;
 		}
 		
-		i = row-1;
-		j = col+1;
-		
-		while(i>=0 && j<dimension) {
+		//Check Whether left upper diagonal has Queen or not
+		for(int i=row-1, j=col+1; i>=0 && j<dimension; i--, j++) {
 			if(board[i][j] == 1) {
 				return false;
 			}
-			i--;
-			j++;
 		}
 		
 		return true;
@@ -52,22 +46,22 @@ public class QueenProblem {
 	 * @param  dimension -  Dimension for board
 	 * @return true if all queen set otherwise false
 	 */
-	public boolean nQueen(int board[][], int startRow, int dimension) throws ArrayIndexOutOfBoundsException{
+	public boolean nQueen(int board[][], int row, int dimension) throws ArrayIndexOutOfBoundsException{
 		
-		if(startRow >= dimension) {
+		if(row >= dimension) {
 			return true;
 		}
 		
 		for(int index=0; index<dimension; index++) {
-			if(this.isSafe(board, startRow, index, dimension)) {
-				board[startRow][index] = 1;
+			if(this.isSafe(board, row, index, dimension)) {
+				board[row][index] = 1;
 				
-				boolean result = this.nQueen(board, startRow+1, dimension);
+				boolean result = this.nQueen(board, row+1, dimension);
 				if(result) {
 					return result;
 				}
 				else {
-					board[startRow][index] = 0;
+					board[row][index] = 0;
 				}
 			}
 		}
