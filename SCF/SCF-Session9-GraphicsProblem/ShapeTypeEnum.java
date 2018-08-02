@@ -1,0 +1,7 @@
+
+public enum ShapeTypeEnum {
+
+	CIRCLE, SQUARE, RECTANGLE, TRIANGLE, REGULAR_POLYGON;
+	
+	
+}
