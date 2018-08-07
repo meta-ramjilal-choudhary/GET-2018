@@ -49,7 +49,7 @@ public class PostfixEvaluation {
 	public double getExpressionValue(String expression) throws EmptyStackException, NumberFormatException, ArithmeticException{
 		StringTokenizer st = new StringTokenizer(expression);
 		Stack<Double> stack = new Stack<Double>();
-		for(int i=0; st.hasMoreTokens(); i++) {
+		while(st.hasMoreTokens()) {
 			String token = st.nextToken();
 			if(token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/")) {
 				double op2 = stack.pop();
