@@ -20,10 +20,7 @@ public class CircularQueue implements Queue{
 			this.rearIndex = 0;
 		}
 		else {
-			this.rearIndex ++;
-			if(this.rearIndex == this.array.length) {
-				this.rearIndex = 0;
-			}
+			this.readIndex = (this.rearIndex == this.array.length) ? 0 : this.rearIndex ++;
 		}
 		this.array[this.rearIndex] = data;
 	}
@@ -37,10 +34,7 @@ public class CircularQueue implements Queue{
 			this.rearIndex = -1;
 		}
 		else {
-			this.frontIndex ++;
-			if(this.frontIndex == this.array.length) {
-				this.frontIndex = 0;
-			}
+			this.frontIndex = (this.frontIndex == this.array.length) ? 0 : this.frontIndex ++;
 		}
 	}
 
