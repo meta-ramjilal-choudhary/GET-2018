@@ -21,17 +21,17 @@ public class PostfixEvaluation {
 	 * @return - Operation computed value
 	 * @throws InvalidExpressionException
 	 */
-	private double operation(double operand1, double operand2, String token) throws ArithmeticException{
-		if(token.equals("+")) {
+	private double operation(double operand1, double operand2, String operator) throws ArithmeticException{
+		if(operator.equals("+")) {
 			return (operand1 + operand2);
 		}
-		if(token.equals("-") ) {
+		if(operator.equals("-") ) {
 			return (operand1 - operand2);
 		}
-		if(token.equals("*")) {
+		if(operator.equals("*")) {
 			return (operand1 * operand2);
 		}
-		if(token.equals("/")) {
+		if(operator.equals("/")) {
 			if(operand2 == 0) {
 				throw new ArithmeticException();
 			}
