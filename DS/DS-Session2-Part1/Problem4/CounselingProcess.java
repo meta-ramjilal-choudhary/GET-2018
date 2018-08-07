@@ -114,46 +114,43 @@ public class CounselingProcess {
 	 * @param counselingList - output counseling excel file
 	 */
 	public void writeDataInFile(File counselingList) {
-		WritableWorkbook myFirstWbook = null;
-        try {
+		WritableWorkbook counselingBook = null;
+        	try {
 
-            myFirstWbook = Workbook.createWorkbook(counselingList);
-            WritableSheet excelSheet = myFirstWbook.createSheet("Sheet 1", 0);
+        		counselingBook = Workbook.createWorkbook(counselingList);
+            		WritableSheet excelSheet = counselingBook.createSheet("Sheet 1", 0);
 
-            int col=0, row=0;
-			for(int i=0; i<this.programList.length; i++) {
-				Label label= new Label(col, row, this.programList[i].getCode());
-				excelSheet.addCell(label);
-				for(Student student : this.programList[i].getListOfStudnets()) {
-					col ++;
-					Label label2= new Label(col, row, Integer.toString(student.getRegNumber()));
-					excelSheet.addCell(label2);
-				}
-				col= 0;
+            		int row=0;
+            		for(Student student: this.studentAllocatePrograms) {
+				Label label1= new Label(0, row, Integer.toString(student.getRank()));
+				Label label2 = new Label(1, row, student.getName());
+				Label label3 = new Label(2, row, student.getAllocatedProgram().getName());
+				excelSheet.addCell(label1);
+				excelSheet.addCell(label2);
+				excelSheet.addCell(label3);
 				row++;
 			}
-
-            myFirstWbook.write();
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (WriteException e) {
-            e.printStackTrace();
-        } finally {
-
-            if (myFirstWbook != null) {
-                try {
-                    myFirstWbook.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (WriteException e) {
-                    e.printStackTrace();
-                }
-            }
+            		counselingBook.write();
 
 
-        }
+        	} catch (IOException e) {
+            		e.printStackTrace();
+        	} catch (WriteException e) {
+            		e.printStackTrace();
+        	} finally {
+
+            		if (counselingBook != null) {
+                	try {
+                		counselingBook.close();
+                	} catch (IOException e) {
+                   		e.printStackTrace();
+                	} catch (WriteException e) {
+                    		e.printStackTrace();
+                	}
+            	}
+
+
+        	}
 	}
 	
 }
