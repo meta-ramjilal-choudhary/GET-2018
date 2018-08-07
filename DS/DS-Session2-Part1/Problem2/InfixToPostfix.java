@@ -52,7 +52,7 @@ public class InfixToPostfix {
 		Stack<String> stack = new Stack<String>();
 		StringBuilder sb = new StringBuilder("");
 		
-		for(int i=0; st.hasMoreTokens(); i++) {
+		while(st.hasMoreTokens()) {
 			String token = st.nextToken();
 			if(this.precedence(token) > 0) {
 				if(stack.isEmpty()) {
