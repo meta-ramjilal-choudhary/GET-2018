@@ -26,14 +26,17 @@ public class CricketProblem {
 		}
 		
 		int viratBallsLeft = numberOfBalls;
-		List<Bowler> bowlerChoose = new ArrayList<Bowler>();
+		List<Integer> bowlerChoose = new ArrayList<Integer>();
 		while(viratBallsLeft > 0 && !pq.isEmpty()) {
-			bowlerChoose.add(pq.peek());
-			viratBallsLeft -= pq.pop().getQuota();
+			Bowler b1 = pq.pop();
+			viratBallsLeft = viratBallsLeft - ( b1.getQuota() - pq.peek().getQuota() + 1 );
+			bowlerChoose.add(b1.getIndex());
+			b1.setQuota(pq.peek().getQuota() - 1);
+			pq.insert(b1);
 		}
 		int bowlerOrder[] = new int[bowlerChoose.size()];
 		for(int i=0; i<bowlerChoose.size(); i++) {
-			bowlerOrder[i] = bowlerChoose.get(i).getIndex();
+			bowlerOrder[i] = bowlerChoose.get(i);
 		}
 		return bowlerOrder;
 	}
