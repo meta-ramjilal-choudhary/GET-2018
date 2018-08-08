@@ -37,11 +37,11 @@ public class MaxPriorityQueue implements PriorityQueue{
 			if(this.isEmpty()) {
 				throw new ArrayIndexOutOfBoundsException("Queue is Empty!");
 			}
-			Bowler minQuotaBowler = this.queue[1];
+			Bowler maxQuotaBowler = this.queue[1];
 			this.queue[1] = this.queue[this.lastIndex];
 			this.lastIndex --;
 			this.maxHeapify(1);
-			return minQuotaBowler;
+			return maxQuotaBowler;
 		}catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println(e);
 			return null;
