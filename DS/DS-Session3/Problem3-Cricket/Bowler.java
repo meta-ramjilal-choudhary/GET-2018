@@ -24,4 +24,12 @@ public class Bowler {
 	public int getQuota() {
 		return this.quota;
 	}
+	
+	/**
+	 * Set New ball quota for bowler
+	 * @param quota - updated quota for bowler
+	 */
+	public void setQuota(int quota) {
+		this.quota = quota;
+	}
 }
