@@ -1,0 +1,111 @@
+DROP DATABASE shopcart;
+CREATE DATABASE ShopCart;
+SHOW DATABASES;
+USE ShopCart;
+SHOW tables;
+
+#create CATEGORY table-----------------
+CREATE TABLE category(
+    category_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    category_title VARCHAR(20) NOT NULL,
+    category_desc VARCHAR(100) NOT NULL,
+    parent_category_id INT,
+    FOREIGN KEY(parent_category_id) REFERENCES category(category_id)
+);
+
+#create PRODUCT table-------------------
+CREATE TABLE product(
+    product_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    product_title VARCHAR(50) NOT NULL,
+    product_desc VARCHAR(100) NOT NULL,
+    product_date DATE NOT NULL,
+    product_price DOUBLE NOT NULL,
+    product_quantity INT NOT NULL,
+    product_isactive BOOLEAN
+);
+
+
+#create product_category table----------
+CREATE TABLE product_category(
+    product_category_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    category_id INT NOT NULL,
+    product_id INT,
+    FOREIGN KEY(category_id) REFERENCES category(category_id),
+    FOREIGN KEY(product_id) REFERENCES product(product_id)
+);
+
+#create IMAGE table
+CREATE TABLE image(
+    image_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    image_url VARCHAR(50) NOT NULL,
+    product_id INT NOT NULL,
+    FOREIGN KEY(product_id) REFERENCES product(product_id)
+);
+
+#create order_line table
+CREATE TABLE order_line(
+    order_line_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    product_quantity INT NOT NULL,
+    order_status VARCHAR(30) NOT NULL
+);
+
+#create ORDER table----------------------
+CREATE TABLE user_order(
+    user_order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_order_date DATE NOT NULL,
+    user_order_amount DOUBLE NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES user(user_id)
+);
+
+#create PAYMENT table--------------------
+CREATE TABLE payment(
+    payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    payment_method VARCHAR(20) NOT NULL,
+    payment_date DATE NOT NULL,
+    user_order_id INT,
+    FOREIGN KEY(user_order_id) REFERENCES user_order(user_order_id)
+);
+
+#create USER table----------------------
+CREATE TABLE user(
+    user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(50) NOT NULL,
+    user_email VARCHAR(50) NOT NULL,
+    user_mobile CHAR(11) NOT NULL
+);
+
+#create ADDRESS table
+CREATE TABLE address(
+    address_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    user_address VARCHAR(100) NOT NULL,
+    FOREIGN KEy(user_id) REFERENCES user(user_id)
+);
+
+#create ROLES table--------------------
+CREATE TABLE roles(
+    roles_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    roles_type VARCHAR(20) NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES user(user_id)
+);
+
+#Show all tables present in DATABASE
+SHOW TABLES;
+
+#Drop Product table---------------------
+drop table product;
+
+#Re-Create product table----------------
+CREATE TABLE product(
+    product_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    product_title VARCHAR(50) NOT NULL,
+    product_desc VARCHAR(100) NOT NULL,
+    product_date DATE NOT NULL,
+    product_price DOUBLE NOT NULL,
+    product_quantity INT NOT NULL,
+    product_isactive BOOLEAN
+);
