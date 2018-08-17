@@ -1,0 +1,159 @@
+#Insert into Category Table
+INSERT INTO category
+(cat_title, parent_cat_id)
+VALUES
+("Electronics", \N),
+("Men's Fashion", \N),
+("Women's Fashion", \N),
+("Laptop", 1),
+("Mobile", 1),
+("Men's Shirt", 2),
+("Men's Jeans", 2),
+("Men's T-Shirt", 2),
+("Women's Jeans", 3),
+("Women's T-Shirt", 3),
+("HP Laptop", 4),
+("Lenovo Laptop", 4),
+("Apple Laptop", 4),
+("Samsung Mobile", 5),
+("Apple Mobile", 5);
+
+
+#Insert into Product table
+INSERT INTO Product
+(prod_title, prod_date, prod_price, stock_quantity, is_active)
+VALUES
+("Levis Men's Shirt", STR_TO_DATE('2018-05-16', '%Y-%m-%d'), 1500, 40, true),
+("Levis Men's Jeans", STR_TO_DATE('2018-06-01', '%Y-%m-%d'), 1700, 50, true),
+("Levis Women's Shirt", STR_TO_DATE('2018-06-10', '%Y-%m-%d'), 1400, 30, true),
+("Levis Women's Jeans", STR_TO_DATE('2018-06-21', '%Y-%m-%d'), 1900, 80, true),
+("Levis Men's T-Shirt", STR_TO_DATE('2018-05-12', '%Y-%m-%d'), 700, 90, true),
+("Levis women's T-Shirt", STR_TO_DATE('2018-04-01', '%Y-%m-%d'), 800, 100, true),
+("HP Pavilon", STR_TO_DATE('2018-03-11', '%Y-%m-%d'), 45000, 20, true),
+("HP Notebook", STR_TO_DATE('2018-02-12', '%Y-%m-%d'), 30400, 40, true),
+("Apple MacBook", STR_TO_DATE('2018-05-14', '%Y-%m-%d'), 70500, 10, true),
+("Galaxy-S8", STR_TO_DATE('2018-04-12', '%Y-%m-%d'), 80500, 50, true),
+("Apple iPhone - 8", STR_TO_DATE('2018-01-10', '%Y-%m-%d'), 70500, 15, true);
+
+
+#Insert into Image Table
+INSERT INTO Image
+(prod_id, img_url)
+VALUES
+(1, "http:\\www.product_image\prod_1_img_1.png"),
+(1, "http:\\www.product_image\prod_1_img_2.png"),
+(1, "http:\\www.product_image\prod_1_img_3.png"),
+(1, "http:\\www.product_image\prod_1_img_4.png"),
+(1, "http:\\www.product_image\prod_1_img_5.png"),
+(2, "http:\\www.product_image\prod_2_img_1.png"),
+(2, "http:\\www.product_image\prod_2_img_2.png"),
+(2, "http:\\www.product_image\prod_2_img_3.png"),
+(3, "http:\\www.product_image\prod_3_img_1.png"),
+(3, "http:\\www.product_image\prod_3_img_2.png"),
+(3, "http:\\www.product_image\prod_3_img_3.png"),
+(3, "http:\\www.product_image\prod_3_img_4.png"),
+(4, "http:\\www.product_image\prod_4_img_1.png"),
+(4, "http:\\www.product_image\prod_4_img_2.png"),
+(5, \N),
+(6, "http:\\www.product_image\prod_6_img_1.png"),
+(6, "http:\\www.product_image\prod_6_img_2.png"),
+(6, "http:\\www.product_image\prod_6_img_3.png"),
+(7, "http:\\www.product_image\prod_7_img_1.png"),
+(7, "http:\\www.product_image\prod_7_img_2.png"),
+(8, \N),
+(9, \N),
+(10, \N),
+(11, "http:\\www.product_image\prod_11_img_1.png");
+
+
+
+
+#Insert into Product_category Table
+INSERT INTO product_category
+(prod_id, cat_id)
+VALUES
+(1, 2), (1, 6),
+(2, 2), (2, 7),
+(3, 3),
+(4, 3), (4, 9),
+(5, 2), (5, 8),
+(6, 3), (6, 10),
+(7, 1), (7, 4), (7, 11),
+(8, 1), (8, 4), (8, 11),
+(9, 1), (9, 4), (9, 13),
+(10, 1), (10, 5), (10, 14),
+(11, 1), (11, 5), (11, 15);
+
+
+#Insert Into Roles Table
+INSERT INTO roles
+(roles_title)
+Values
+("Shopper"),
+("Administrator");
+
+#Insert into User Table
+INSERT INTO user
+(user_name, user_email, roles_id)
+VALUES
+("Ram", "ram@shopcart.com", 1),
+("Rahul", "rahul@shopcart.com", 1),
+("Vaibhav", "vaibhav@shopcart.com", 1),
+("Shubham", "shubham@shopcart.com", 1),
+("Jitendra", "jitendra@shopcart.com", 2),
+("Nikhil", "nikhil@shopcart.com", 1),
+("Mayank", "mayank@shopcart.com", 1),
+("Komal", "komal@shopcart.com", 2),
+("Akshita", "akshita@shopcart.com", 1),
+("Deepanshu", "deepanshu@shopcart.com", 2),
+("Ravi", "ravi@shopcart.com", 1);
+
+
+#Insert into Address table
+INSERT INTO address
+(user_id, user_address)
+VALUES
+(1, "kana vihar jaipur"),
+(1, "Sanganer jaipur"),
+(1, "Pratapura jaipur"),
+(2, "Vaishali nagar jaipur"),
+(2, "Lalarpura jaipur"),
+(3, "Kana vihar jaipur"),
+(3, "Pratapura alwar"),
+(4, "Malviya nagar jaipur"),
+(5, "Malviya nagar jaipur"),
+(5, "Pratapura jaipur"),
+(6, "Sanganer jaipur"),
+(7, "Pratapnagar jaipur"),
+(8, "shastri nagar jaipur"),
+(9, "shastri nagar ajmer"),
+(10, "shastri nagar jaipur"),
+(10, "Sanganer jaipur"),
+(11, "Pratapura jaipur"),
+(11, "Vaishali nagar jaipur");
+
+
+#Insert into user_order table
+INSERT INTO user_order
+(order_date, order_amount, user_id, pay_method)
+VALUES
+(STR_TO_DATE('2018-08-16', '%Y-%m-%d'), 3000, 1, "COD"),
+(STR_TO_DATE('2018-08-14', '%Y-%m-%d'), 5100, 2, "DEBIT"),
+(STR_TO_DATE('2018-08-12', '%Y-%m-%d'), 1500, 3, "CREDIT"),
+(STR_TO_DATE('2018-08-10', '%Y-%m-%d'), 1700, 6, "COD"),
+(STR_TO_DATE('2018-07-16', '%Y-%m-%d'), 80500, 8, "COD");
+
+
+#Insert into order_line
+INSERT INTO order_line
+(order_id, prod_id, prod_quantity)
+VALUES
+(1, 1, 2),
+(2, 2, 3),
+(3, 1, 1);
+
+INSERT INTO order_line
+(order_id, prod_id, prod_quantity, order_status)
+VALUES
+(4, 2, 1, "Shipped"),
+(5, 10, 1, "Shipped");
