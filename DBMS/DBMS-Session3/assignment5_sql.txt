@@ -1,0 +1,45 @@
+SHOW DATABASES;
+USE ShopCart;
+SHOW TABLES;
+
+
+#Create a view displaying the order information (Id, Title, Price, Shopper’s name,
+#Email, Orderdate, Status) with latest ordered items should be displayed first for
+#last 60 days.
+
+CREATE VIEW order_info
+AS
+SELECT 
+	p.prod_id Id, p.prod_title Title, p.prod_price Price, 
+    u.user_name Shopper_Name, u.user_email Email, o.order_date OrderDate, l.order_status Status
+FROM
+	Product p, order_line l, user_order o, user u
+WHERE
+	l.prod_id = p.prod_id
+    AND
+    l.order_id = o.order_id
+    AND
+    o.user_id = u.user_id
+    AND
+    o.order_date >= DATE(NOW()) - INTERVAL 60 DAY;
+    
+
+#Use the above view to display the Products(Items) which are in ‘shipped’ state
+SELECT 
+	Id, Title, Price
+FROM 
+	order_info
+WHERE
+	Status LIKE "Shipped";
+
+
+# Use the above view to display the top 5 most selling products
+
+SELECT DISTINCT
+	o1.Id, (SELECT COUNT(o2.Id) FROM order_info o2 WHERE o1.Id = o2.Id) as total
+FROM 
+	order_info o1
+ORDER BY total DESC
+LIMIT 5;
+
+

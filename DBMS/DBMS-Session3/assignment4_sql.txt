@@ -1,0 +1,30 @@
+SHOW DATABASES;
+USE ShopCart;
+SHOW TABLES;
+
+CREATE TABLE zip_code_list(
+	id INT NOT NULL AUTO_INCREMENT,
+    zipcode CHAR(6) NOT NULL,
+    city_name VARCHAR(20) NOT NULL,
+    state_name VARCHAR(20) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+INSERT INTO zip_code_list
+(zipcode, city_name, state_name)
+VALUES
+("302021", "Jaipur", "RAJASTHAN"),
+("721302", "Kharagpur", "West Bengal"),
+("400076", "Mumbai", "Maharashtra"),
+("208016", "Kanpur", "Uttar Pradesh"),
+("600036", "Chennai", "Tamil Nadu"),
+("110016", "South West Delhi", "Delhi"), 
+("781039", "Guwahati", "Assam"),
+("247667", "Roorkee", "Uttarakhand"),
+("121212", "Ajmer", "RAJASTHAN");
+
+SELECT
+	zipcode, city_name AS City, state_name AS State 
+FROM
+	zip_code_list
+ORDER BY state_name, city_name;
