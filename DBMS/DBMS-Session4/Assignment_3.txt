@@ -1,0 +1,17 @@
+USE ShopCart;
+
+# Identify the columns require indexing in order, product, category
+#tables and create indexes
+
+#Create INDEXES for Order Tabel
+CREATE INDEX by_order_date ON user_order(order_date);
+CREATE INDEX by_order_amount ON user_order(order_amount);
+
+#Create INDEXES for Product table
+CREATE INDEX by_prod_title ON Product(prod_title);
+CREATE INDEX by_prod_date ON Product(prod_date);
+CREATE INDEX by_prod_price ON Product(prod_price);
+
+#Create INDEXES for Category Tables
+CREATE INDEX by_cat_title ON Category(cat_title);
+CREATE INDEX by_parent_id ON Category(parent_cat_id);
