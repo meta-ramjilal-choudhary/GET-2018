@@ -42,11 +42,13 @@ BEGIN
 
     SET startDate = IF(startDate > endDate, endDate - INTERVAL DAY(endDate)-1 DAY, startDate);
     SELECT 
-        order_id, order_amount 
+        o.order_id, o.order_amount, l.order_status
     FROM    
-        user_order
+        user_order o, order_line l
     WHERE 
-        order_date BETWEEN startDate AND endDate;
+        order_date BETWEEN startDate AND endDate
+        AND
+        o.order_id = l.order_id;
     
 END $$
 
