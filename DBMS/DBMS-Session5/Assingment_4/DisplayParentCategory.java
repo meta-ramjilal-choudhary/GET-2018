@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class DisplayParentCategory {
-	
+	/**
+	* @return - POJO list of parent category with child category
+	*/
 	public static List<DisplayParentCatPOJO> getParentCategoryList(){
 		Connection connection;
 		try {
