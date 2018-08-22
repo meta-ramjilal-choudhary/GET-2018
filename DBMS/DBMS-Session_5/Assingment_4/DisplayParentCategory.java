@@ -6,6 +6,9 @@ import java.util.List;
 
 public class DisplayParentCategory {
 	
+	/**
+	* @return - List of Parent category with child category
+	*/
 	public static List<DisplayParentCatPOJO> getParentCategoryList(){
 		Connection connection;
 		try {
