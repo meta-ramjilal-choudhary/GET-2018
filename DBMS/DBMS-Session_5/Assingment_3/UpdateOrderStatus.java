@@ -4,6 +4,9 @@ import java.sql.SQLException;
 
 public class UpdateOrderStatus {
 
+	/**
+	* @return - total rows of product table which are inactive
+	*/
 	public static int setproductInActive() {
 		int result = 0;
 		Connection connection;
