@@ -62,7 +62,7 @@ WHERE
     AND
     prod_cat.cat_id = cat.cat_id
     AND
-    cat.cat_title LIKE "Electronics";
+    cat.cat_title = "Electronics";
         
         
 #Display the list of Products whose Quantity on hand (Inventory) is under 50
