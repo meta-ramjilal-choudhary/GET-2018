@@ -8,6 +8,8 @@ WHERE
     prod.prod_id = prod_cat.prod_id 
     AND 
     prod_cat.cat_id = cat.cat_id
+    AND
+    prod.is_active = true
 ORDER BY 
     prod_date DESC;
 
@@ -24,7 +26,7 @@ WHERE
 
 #Display all Id, Title and Parent Category Title for all the Categories 
 #listed, sorted by Parent Category Title and then Category Title.
-#(If Category is top category then Parent Category Title column should display ìTop Categoryî as value.)
+#(If Category is top category then Parent Category Title column should display ‚ÄúTop Category‚Äù as value.)
 SELECT 
     cat.cat_id, cat.cat_title, IFNULL(parent.cat_title, 'Top Category') AS Parent_Cat
 FROM 
