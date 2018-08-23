@@ -3,63 +3,29 @@ USE ShopCart;
 SHOW TABLES;
 
 #Display the list of products (Id, Title, Count of Categories) which fall in more than one Categories
-CREATE VIEW Count_Category
-AS
-SELECT DISTINCT
-	pc1.prod_id, (SELECT COUNT(cat_id) FROM product_category pc2 WHERE pc1.prod_id = pc2.prod_id) AS Count_Cat
-FROM
-	product_category pc1;
-    
-SELECT 
-	prod.prod_id, prod.prod_title, cnt_cat.count_cat
-FROM 
-	Product prod, count_category cnt_cat
-WHERE 
-	prod.prod_id = cnt_cat.prod_id
-    AND
-	cnt_cat.count_cat >1;
+SELECT prod_id
+FROM Product_category 
+GROUP BY prod_id
+HAVING COUNT(prod_id) > 1;
 
 
 #Display Count of products as per below price range : 
 # 0 - 100
 # 101 - 500
 # above 500
-CREATE VIEW below_100
-AS
-SELECT 
-	COUNT(prod_id) AS count_below_100
-FROM
-	Product
-WHERE 
-	prod_price <= 100;
-    
-CREATE VIEW between_101_500
-AS
-SELECT 
-	COUNT(prod_id) AS count_between_101_500
-FROM
-	Product
-WHERE 
-	prod_price > 100
-	AND
-    prod_price <= 500;
 
-CREATE VIEW above_500
-AS
-SELECT 
-	COUNT(prod_id) AS count_above_500
-FROM
-	Product
-WHERE 
-	prod_price > 500;
-
-SELECT * FROM below_100, between_101_500, above_500;
+SELECT CASE
+    WHEN p.prod_price >=0 AND p.prod_price <= 2000 THEN '0-2000'
+    WHEN p.prod_price >2000 AND p.prod_price <= 5000 THEN '2001-5000'
+    WHEN p.prod_price >5000 THEN 'above-5000' END AS ranges, COUNT(*)
+FROM Product p
+GROUP BY ranges;
 
 
 #Display the Categories along with number of products under each category
-#?-----------------
-# -----------
-#?-----------------
+SELECT cat_id, COUNT(prod_id)
+FROM Product_category
+GROUP BY cat_id;
 
 
 
