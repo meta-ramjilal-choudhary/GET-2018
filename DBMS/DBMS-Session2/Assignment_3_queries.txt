@@ -10,9 +10,6 @@ SELECT
 FROM 
     user_order ORDER BY order_amount DESC LIMIT 10;
 
-select * from order_line;
-select * from user_order;
-
 #Display all the Orders which are placed more than 10 days old 
 #and one or more items from those orders are still not shipped.
 CREATE VIEW orders
@@ -77,12 +74,10 @@ WHERE
     AND
     o.order_date >= DATE(NOW()) - INTERVAL 15 DAY
     AND
-    u.roles_id = 1
-    AND
-    l.order_id = o.order_id;
+    u.roles_id = 1;
     
     
-#Display list of order items which are in ìshippedî state for particular Order Id (i.e.: 2))
+#Display list of order items which are in ‚Äúshipped‚Äù state for particular Order Id (i.e.: 2))
 SELECT 
     p.prod_id, p.prod_title, l.prod_quantity, l.order_status
 FROM 
@@ -108,7 +103,7 @@ WHERE
     AND
     p.prod_price BETWEEN 200 AND 5000;
     
-#Update first 20 Order items status to ìShippedî which are placed today
+#Update first 20 Order items status to ‚ÄúShipped‚Äù which are placed today
 
 UPDATE 
     order_line l, user_order o
