@@ -41,27 +41,12 @@ WHERE
 
 
 #Display list of shoppers which haven't ordered anything since last 30 days
-CREATE VIEW shoppers
-AS
-SELECT DISTINCT
-    u.user_id
-FROM 
-    user_order o, user u, roles r
-WHERE 
-    o.user_id = u.user_id 
-    AND 
-    o.order_date > DATE(NOW()) - INTERVAL 1 DAY
-    AND
-    u.roles_id = 1;
-
-SELECT DISTINCT
-    u.user_id, u.user_name, u.user_email
-FROM 
-    user u, roles r
-WHERE 
-    u.user_id NOT IN (SELECT * FROM shoppers)
-    AND
-    u.roles_id = 1;
+SELECT u.user_id, user_name, user_email FROM user u
+WHERE
+u.user_id NOT IN(SELECT DISTINCT o.user_id FROM user_order o 
+                WHERE DATEDIFF(NOW(), order_date) <= 30)
+AND
+u.roles_id = 1;
 
 
 #Display list of shopper along with orders placed by them in last 15 days
