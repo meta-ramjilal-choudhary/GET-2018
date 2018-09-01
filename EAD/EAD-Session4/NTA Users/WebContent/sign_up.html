@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> National Test Agency </title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <h1> National Test Agency </h1>
+            <p> Excellence in Assessment </p>
+        </header>
+        <nav>
+            <a href="home_page.html"> Home </a> 
+            <a href="log_in.html"> Log In </a>
+            <a href="sign_up.html"> New User? </a> 
+        </nav>
+        <div>
+            <form id="sign_up_form" action="addUser"> 
+                <table id="sign_up" align="center">
+                    <tr>
+                        <th align="left"> First Name </th>
+                        <td> <input type="text" name="first_name" id="first_name" required/> </td>
+                    </tr>
+                    <tr>
+                        <th align="left"> Last Name </th>
+                        <td> <input type="text" name="last_name" id="last_name" required/> </td>
+                    </tr>
+                    <tr>
+                        <th align="left"> DOB </th>
+                        <td> <input type="date" name="dob" id="dob" required/> </td>
+                    </tr>
+                    <tr>
+                        <th align="left"> Mobile Number </th>
+                        <td> <input type="text" name="mobile_number" id="mobile_number" required/> </td>
+                    </tr>
+                    <tr>
+                        <th align="left"> Email </th>
+                        <td> <input type="text" name="email" id="email" required /> </td>
+                    </tr>
+                    <tr>
+                        <th align="left"> Password </th>
+                        <td> <input type="password" name="password" id="password" required /> </td>
+                    </tr>
+                    <tr>
+                    	<th align="left"> Organization </th>
+                    	<td>
+                    		<select name="organization">
+                    			<option name="metacube"> Metacube </option>
+                    			<option name="google"> Google </option>
+                    			<option name="microsoft"> Microsoft </option>
+                    			<option name="facebook"> Facebook </option>
+                    			<option name="paypal"> Paypal </option>
+                    		</select>
+                    	</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2" align="center"> <input type="submit" name="submit" id="submit" /> </th>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

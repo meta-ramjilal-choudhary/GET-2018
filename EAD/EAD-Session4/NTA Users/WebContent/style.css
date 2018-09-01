@@ -1,0 +1,42 @@
+header{
+    background-color: #bbb;
+    text-align:center;
+    color : #260029;
+    padding:5px;
+    height: 100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+nav{
+    background-color: aliceblue;
+    text-align: right;
+    padding : 5px;
+}
+
+a{
+    padding : 5px;
+    margin : 5px;
+    background-color: aquamarine;
+    text-decoration: none;
+    color : #010629 ;
+}
+
+body{
+    background-image: url("login_page.jpg");
+}
+
+#log_in{
+    margin-top: 100px;
+    font-size: 20px;
+    color: #bbb;
+}
+
+#sign_up{
+    margin-top: 100px;
+    font-size: 20px;
+    color: #bbb;
+}
+
+td, th{
+    padding: 10px;
+}
