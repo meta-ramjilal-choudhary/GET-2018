@@ -1,0 +1,46 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id="triangle" class="com.metacube.training.Triangle">
+   	 <property name="points">
+   	 	<list>
+   	 		<ref bean="pointOrigin" />
+   	 		<ref bean="pointA" />
+   	 		<ref bean="pointB" />
+   	 	</list>
+   	 </property>
+   	 <property name="setOfPoints">
+   	 	<set>
+   	 		<ref bean="pointOrigin" />
+   	 		<ref bean="pointA" />
+   	 		<ref bean="pointB" />
+   	 	</set>
+   	 </property>
+   	 <property name="mapOfPoints">
+   	 	<map>
+   	 		<entry key="A" value-ref="pointA"></entry>
+   	 		<entry key="B" value-ref="pointB"></entry>	
+   	 	</map>
+   	 </property>
+   </bean>
+   
+   <bean id="pointOrigin" class="com.metacube.training.Point">
+   	 <property name="x" value="0"></property>
+   	 <property name="y" value="0"></property>
+   </bean>
+   
+   <bean id="pointA" class="com.metacube.training.Point">
+   	 <property name="x" value="34"></property>
+   	 <property name="y" value="12"></property>
+   </bean>
+   
+   <bean id="pointB" class="com.metacube.training.Point">
+   	 <property name="x" value="454"></property>
+   	 <property name="y" value="-34"></property>
+   </bean>
+
+</beans>
