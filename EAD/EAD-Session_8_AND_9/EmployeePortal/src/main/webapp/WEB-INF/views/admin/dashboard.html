@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Dashboard</title>
+</head>
+<body>
+<div>
+    <header style="background-color:#ababab"> 
+    	<span>
+    		<h1 align="center" 
+    			style="color:navy"
+    			th:text="${username}"> username 
+    		</h1>
+    		<p align="right"> <a th:href="@{/logout}"> Logout </a> </p>
+    	</span>	
+    </header>
+    <div>
+    	<table align="center">
+    	<tr>
+    		<td> <a th:href="@{/admin/projects}"> Project </a> </td>
+    	</tr>
+    	<tr>
+    		<td> <a th:href="@{/admin/skills}"> Skills </a> </td>
+    	</tr>
+    	<tr>
+    		<td> <a th:href="@{/admin/jobtitles}"> Job title </a> </td>
+    	</tr>
+    	<tr>
+    		<td> <a th:href="@{/admin/employees}"> Employee </a> </td>
+    	</tr>
+    	<tr>
+    		<td> <a th:href="@{/admin/search_employee}"> Search employee </a> </td>
+    	</tr>
+    </table>
+    </div>
+</div>
+</body>
+</html>
