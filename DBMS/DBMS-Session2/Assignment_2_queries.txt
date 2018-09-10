@@ -1,0 +1,83 @@
+#Display Id, Title, Category Title, Price of the products 
+#which are Active and recently added products should be at top
+SELECT 
+    prod.prod_id, prod.prod_title, cat.cat_title, prod.prod_price, prod_date 
+FROM 
+    Product prod, Category cat, product_category prod_cat
+WHERE 
+    prod.prod_id = prod_cat.prod_id 
+    AND 
+    prod_cat.cat_id = cat.cat_id
+    AND
+    prod.is_active = true
+ORDER BY 
+    prod_date DESC;
+
+
+#Display the list of products which don't have any images
+SELECT
+    prod.prod_id, prod_title
+FROM
+    Product as prod, Image img
+WHERE 
+    prod.prod_id = img.prod_id 
+    AND 
+    img.img_url IS null; 
+
+#Display all Id, Title and Parent Category Title for all the Categories 
+#listed, sorted by Parent Category Title and then Category Title.
+#(If Category is top category then Parent Category Title column should display “Top Category” as value.)
+SELECT 
+    cat.cat_id, cat.cat_title, IFNULL(parent.cat_title, 'Top Category') AS Parent_Cat
+FROM 
+    Category cat LEFT JOIN Category parent
+ON 
+    cat.parent_cat_id = parent.cat_id; 
+
+
+#Display Id, Title, Parent Category Title of all the leaf Categories 
+#(categories which are not parent of any other category)
+CREATE VIEW leaf_category
+AS SELECT cat_id, cat_title, parent_cat_id FROM category 
+WHERE cat_id NOT IN
+    (SELECT DISTINCT parent_cat_id 
+    FROM Category 
+    WHERE parent_cat_id IS NOT NULL);
+
+SELECT 
+    leaf.cat_id, leaf.cat_title, IFNULL(parent.cat_title, 'Top Category') AS Parent_Cat
+FROM 
+    leaf_category leaf LEFT JOIN Category parent
+ON
+    leaf.parent_cat_id = parent.cat_id; 
+
+
+#Display Product Title, Price & Description which falls into particular category Title
+SELECT 
+    prod.prod_title, prod.prod_price, prod.stock_quantity 
+FROM 
+    Product prod, Category cat, Product_category prod_cat
+WHERE 
+    prod.prod_id = prod_cat.prod_id 
+    AND
+    prod_cat.cat_id = cat.cat_id
+    AND
+    cat.cat_title = "Electronics";
+        
+        
+#Display the list of Products whose Quantity on hand (Inventory) is under 50
+SELECT 
+    prod_id, prod_title, prod_price
+FROM 
+    Product
+WHERE
+    stock_quantity < 50 
+    AND
+    is_active IS true;
+
+
+#Increase the Inventory of all the products by 100
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Product SET stock_quantity = stock_quantity + 100;
+
+

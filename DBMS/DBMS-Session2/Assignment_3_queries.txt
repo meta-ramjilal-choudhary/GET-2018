@@ -1,0 +1,100 @@
+#Display Recent 50 Orders placed (Id, Order Date, Order Total)
+SELECT 
+    order_id, order_date, order_amount 
+FROM 
+    user_order ORDER BY order_date DESC LIMIT 50;
+
+#Display 10 most expensive Orders
+SELECT 
+    order_id, order_date, order_amount 
+FROM 
+    user_order ORDER BY order_amount DESC LIMIT 10;
+
+#Display all the Orders which are placed more than 10 days old 
+#and one or more items from those orders are still not shipped.
+CREATE VIEW orders
+AS
+SELECT 
+    o.order_id, o.order_date, o.order_amount, o.user_id, l.order_status 
+FROM 
+    user_order o, order_line l
+WHERE 
+    (o.order_date <= DATE(NOW()) - INTERVAL 10 DAY) 
+    AND
+    (o.order_id = l.order_id);
+
+CREATE VIEW total_shipped
+AS
+SELECT 
+    count(o.order_id) AS total
+FROM 
+    orders o
+WHERE 
+    o.order_status LIKE "Shipped";
+
+SELECT 
+    order_id, order_date, order_amount, user_id, order_status
+FROM
+    orders , total_shipped
+WHERE 
+    total <> (SELECT COUNT(order_id) FROM orders);
+
+
+#Display list of shoppers which haven't ordered anything since last 30 days
+SELECT u.user_id, user_name, user_email FROM user u
+WHERE
+u.user_id NOT IN(SELECT DISTINCT o.user_id FROM user_order o 
+                WHERE DATEDIFF(NOW(), order_date) <= 30)
+AND
+u.roles_id = 1;
+
+
+#Display list of shopper along with orders placed by them in last 15 days
+SELECT DISTINCT
+    u.user_id, u.user_name, o.order_id, o.order_amount
+FROM 
+    user_order o, user u, roles r, order_line l
+WHERE 
+    o.user_id = u.user_id
+    AND
+    o.order_date >= DATE(NOW()) - INTERVAL 15 DAY
+    AND
+    u.roles_id = 1;
+    
+    
+#Display list of order items which are in “shipped” state for particular Order Id (i.e.: 2))
+SELECT 
+    p.prod_id, p.prod_title, l.prod_quantity, l.order_status
+FROM 
+    product p, order_line l, user_order o
+WHERE 
+    o.order_id = 2
+    AND
+    l.order_id = o.order_id
+    AND
+    l.prod_id = p.prod_id;
+
+
+#Display list of order items along with order placed date which fall between Rs 200 to Rs 5000 price
+
+SELECT
+    o.order_id, o.order_date, p.prod_id, p.prod_title, p.prod_price
+FROM 
+    product p, order_line l, user_order o
+WHERE
+    l.prod_id = p.prod_id
+    AND
+    o.order_id = l.order_id
+    AND
+    p.prod_price BETWEEN 200 AND 5000;
+    
+#Update first 20 Order items status to “Shipped” which are placed today
+
+UPDATE 
+    order_line l, user_order o
+SET
+    l.order_status = "Shipped"
+WHERE 
+    l.order_id = o.order_id
+    AND
+    o.order_date = DATE(now());
