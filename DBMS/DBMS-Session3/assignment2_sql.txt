@@ -1,0 +1,38 @@
+SHOW DATABASES;
+USE ShopCart;
+SHOW TABLES;
+
+#Display the list of products (Id, Title, Count of Categories) which fall in more than one Categories
+SELECT prod_id
+FROM Product_category 
+GROUP BY prod_id
+HAVING COUNT(prod_id) > 1;
+
+
+#Display Count of products as per below price range : 
+# 0 - 100
+# 101 - 500
+# above 500
+
+SELECT CASE
+    WHEN p.prod_price >=0 AND p.prod_price <= 2000 THEN '0-2000'
+    WHEN p.prod_price >2000 AND p.prod_price <= 5000 THEN '2001-5000'
+    WHEN p.prod_price >5000 THEN 'above-5000' END AS ranges, COUNT(*)
+FROM Product p
+GROUP BY ranges;
+
+
+#Display the Categories along with number of products under each category
+SELECT cat_id, COUNT(prod_id)
+FROM Product_category
+GROUP BY cat_id;
+
+
+
+
+
+
+
+
+
+

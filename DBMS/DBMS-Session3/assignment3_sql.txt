@@ -1,0 +1,97 @@
+SHOW DATABASES;
+USE ShopCart;
+SHOW TABLES;
+
+#Display Shopper’s information along with number of orders he/she placed during last 30 days
+SELECT u.user_id, u.user_name, u.user_email, COUNT(order_id) total_order
+FROM user_order o, user u
+WHERE
+    o.order_id = u.user_id
+    AND
+    u.roles_id = 1
+    AND
+    o.order_date >= DATE(NOW()) - INTERVAL 30 DAY
+GROUP BY o.user_id
+LIMIT 10;
+    
+
+#Display the top 10 Shoppers who generated maximum number of revenue in last 30 days
+
+SELECT user_id, SUM(order_amount) revenue
+FROM user_order
+WHERE order_date >= DATE(NOW()) - INTERVAL 30 DAY
+GROUP BY user_id
+ORDER BY revenue DESC
+LIMIT 10;
+
+
+#Display top 20 Products which are ordered most in last 60 days along with numbers
+SELECT p.prod_id, p.prod_title, COUNT(order_line_id)
+FROM order_line l, user_order o, product p
+WHERE
+    l.order_id = o.order_id
+    AND
+    p.prod_id = l.prod_id
+    AND
+    o.order_date >= DATE(NOW()) - INTERVAL 60 DAY
+GROUP BY prod_id
+ORDER BY COUNT(order_line_id) DESC
+LIMIT 20;
+
+
+#Display Monthly sales revenue of the StoreFront for last 6 months. It should display each month’s sale
+SELECT MONTH(order_date) month, SUM(order_amount) revenue
+FROM user_order
+WHERE order_date >= DATE(NOW()) - INTERVAL 6 MONTH
+GROUP BY MONTH(order_date), YEAR(order_date);
+
+
+#Mark the products as Inactive which are not ordered in last 90 days
+SET SQL_SAFE_UPDATES = 0;
+UPDATE product p
+SET p.is_active = false
+WHERE p.prod_id NOT IN(SELECT DISTINCT l.prod_id 
+		       FROM order_line l, user_order o 
+                       WHERE l.order_id = o.order_id AND
+                       DATEDIFF(NOW(), order_date) <= 90);
+
+
+#Given a category search keyword, display all the Products present in this
+#category/categories
+#Display all product where catgoey start from "M"
+
+SELECT DISTINCT p.prod_id, p.prod_title
+FROM product p, product_category pc, category c
+WHERE 
+    c.cat_title LIKE "M%"
+    AND 
+    c.cat_id = pc.cat_id
+    AND
+    pc.prod_id = p.prod_id;
+
+
+#Display top 10 Items which were cancelled most
+SELECT * FROM order_line;
+INSERT INTO order_line
+(order_id, prod_id, prod_quantity, order_status)
+VALUES
+(1, 3, 2, "Cancelled"),
+(2, 5, 1, "Cancelled"),
+(3, 3, 6, "Cancelled");
+
+SELECT p.prod_id, p.prod_title, COUNT(order_status) cacel_total
+FROM order_line l, product p
+WHERE
+    p.prod_id = l.prod_id
+    AND
+    order_status LIKE "Cancel%"
+GROUP BY l.prod_id;
+
+
+
+
+
+
+
+
+
