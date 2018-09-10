@@ -1,0 +1,56 @@
+USE shopcart;
+
+
+#Create a Stored procedure to retrieve average sales of each product
+#in a month. Month and year will be input parameter to function
+DELIMITER $$
+
+CREATE PROCEDURE averageSales
+(IN month INT, IN year INT)
+BEGIN
+
+    SELECT 
+        p.prod_id, COUNT(l.order_line_id)
+    FROM
+        Product p, User_order o, Order_line l
+    WHERE
+        p.prod_id = l.prod_id
+        AND
+        l.order_id = o.order_id
+        AND
+        MONTH(o.order_date) = month
+        AND
+        YEAR(o.order_date) = year
+    GROUP BY p.prod_id;
+
+END $$
+
+CALL averageSales(8, 2018);
+
+
+#Create a stored procedure to retrieve table having order detail with
+#status for a given period. Start date and end date will be input
+#parameter. Put validation on input dates like start date is less than
+#end date. If start date is greater than end date take first date of month
+#as start date.
+
+DELIMITER $$
+
+CREATE PROCEDURE ordesInPeriod
+(IN startDate DATE, IN endDate DATE)
+BEGIN
+
+    SET startDate = IF(startDate > endDate, endDate - INTERVAL DAY(endDate)-1 DAY, startDate);
+    SELECT 
+        o.order_id, o.order_amount, l.order_status
+    FROM    
+        user_order o, order_line l
+    WHERE 
+        order_date BETWEEN startDate AND endDate
+        AND
+        o.order_id = l.order_id;
+    
+END $$
+
+CALL ordesInPeriod(STR_TO_DATE('2018-10-12', '%Y-%m-%d'), STR_TO_DATE('2018-08-30', '%Y-%m-%d'));
+CALL ordesInPeriod(STR_TO_DATE('2018-06-12', '%Y-%m-%d'), STR_TO_DATE('2018-08-30', '%Y-%m-%d'));

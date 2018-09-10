@@ -1,0 +1,47 @@
+USE shopcart;
+
+#Create a function to calculate number of orders in a month. Month
+#and year will be input parameter to function
+
+DELIMITER $$
+
+CREATE FUNCTION calOrdersInMonth(order_month INT, order_year INT)
+RETURNS INT DETERMINISTIC 
+
+BEGIN
+    
+    DECLARE orders INT;
+    SET orders = (SELECT COUNT(*) FROM user_order 
+                 WHERE MONTH(order_date) = order_month AND YEAR(order_date) = order_year);
+    RETURN (orders);
+    
+END $$
+
+SELECT calOrdersInMonth(8, 2018) AS total_order;
+
+
+#Create a function to return month in a year having maximum orders.
+#Year will be input parameter
+
+DELIMITER $$
+
+CREATE FUNCTION calMaxOrdersMonth(order_year INT)
+RETURNS INT DETERMINISTIC 
+
+BEGIN
+    
+    RETURN (
+        SELECT 
+            MONTH(order_date) 
+        FROM 
+            user_order 
+        WHERE  
+            YEAR(order_date) = order_year
+        GROUP BY MONTH(order_date) 
+        ORDER BY COUNT(order_id) DESC 
+        LIMIT 1
+    );
+    
+END $$
+
+SELECT calMaxOrdersMonth(2018);
