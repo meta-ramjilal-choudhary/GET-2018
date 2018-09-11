@@ -1,0 +1,26 @@
+package com.metacube.training.EmployeePortalWithSpringBoot.dao;
+
+import java.util.List;
+
+import com.metacube.training.EmployeePortalWithSpringBoot.model.Employee;
+
+
+public interface EmployeeDAO {
+
+	Employee getEmployeeById(Long id);
+	
+	List<Employee> getAllEmployees();
+	
+	boolean deleteEmployee(Employee employee);
+	
+	boolean updateEmployee(Employee employee);
+	
+	boolean createEmployee(Employee employee);
+	
+	List<Employee> getAllEmployeeByName(String name);
+	
+	Employee getAllEmployeeByEmail(String email);
+	
+	boolean updateEmployeePwd(String email, String pwd);
+	
+}

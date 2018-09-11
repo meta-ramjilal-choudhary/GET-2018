@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html 
+      xmlns:th="http://www.thymeleaf.org"
+      >
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+	<header>
+		<h1 align="center"> Employee Portal </h1>
+	</header>
+	<div align="center">
+		<a th:href="@{/admin/login}"> Admin Login  </a>
+		<br/><br/>
+		<a th:href="@{/employee/login}"> Employee Login  </a>
+	</div>
+</body>
+</html>

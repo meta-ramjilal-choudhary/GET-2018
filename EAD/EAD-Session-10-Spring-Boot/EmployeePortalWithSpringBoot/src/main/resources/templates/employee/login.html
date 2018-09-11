@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	>
+	<head>
+		<title> Employee Login </title>
+	</head>
+	<body>
+		<header>
+			<h1 align="center"> Employee Login Portal </h1>
+		</header>
+		<div>
+			<form th:action="@{login}" method="Post">
+				<table align="center">
+				<tr>
+					<th> Employee ID </th>
+					<td> <input type="text" name ="email" id="email" /> </td>
+				</tr>
+				<tr>
+					<th> Password </th>
+					<td> <input type="password" name="password" id="password" /> </td>
+				</tr>
+				<tr>
+					<td><a th:href="@{/employee/forgot}">Forgot password ?</a></td>
+				</tr>
+				<tr>
+					<td> <input type="submit" name="submit" value="login" /> </td> 
+				</tr>
+			</table>
+			</form>
+		</div>
+	</body>
+</html>
