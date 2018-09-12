@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>Employee profile</title>
+
+</head>
+<body>
+	<header style="background-color:#ababab"> 
+    	<span>
+    		<h1 align="center" 
+    			style="color:navy"
+    			th:text="${employee.first_name}"> name 
+    		</h1>
+    		<p align="right"> <a th:href="@{/logout}"> Logout </a> </p>
+    	</span>	
+    </header>
+    <div>
+    	<table align="center">
+    		<tr>
+    			<th align="left"> Name: </th>
+    			<td th:text="${employee.first_name} + ' ' + ${employee.middle_name} + ' ' + ${employee.last_name}">First Name</td>
+    		</tr>
+    		<tr>
+    			<th align="left"> DOB </th>
+    			<td th:text="${employee.dob}"> DOB </td>
+    		</tr>
+    		<tr>
+    			<th align="left"> Gender </th>
+    			<td th:text="${employee.gender}"> Gender </td>
+    		</tr>
+    		<tr>
+    			<th align="left"> Email Id </th>
+    			<td th:text="${employee.email_id}"></td>
+    		</tr>
+    		<tr>
+    			<td><a th:href="${'../employees/edit?id=' + employee.emp_code}" >Edit</a></td>
+    		</tr>
+    		<tr>
+    			 <td><a th:href="${'../employees/delete?id=' + employee.emp_code}" >Delete</a></td>
+    		</tr>
+    		<tr>
+    			<td><a th:href="${'../employees/jobDetails?id=' + employee.emp_code}">Add Job Detail</a></td>
+    		</tr>
+    	</table>
+    </div>
+</body>
+</html>
