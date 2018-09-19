@@ -1,0 +1,181 @@
+body{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	background-image: url("../images/bodybg.png");
+}
+
+.cover_page{
+	background-image: url("../images/homebg.png");
+}
+
+
+.header{
+	color: white;
+	display: flex;
+}
+
+.menu_bar{
+	flex: 50%;
+	height: 130px;
+	float: left;
+	text-align: center;
+}
+
+.cover{
+	display: flex;
+}
+
+.cover1{
+	flex: 50%;
+}
+
+.heading_text{
+	margin: 0;
+	margin-left: 200px;
+	font-size: 60px;
+	color: white;
+	text-align: left;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.link{
+	margin: 0;
+	margin-left: 200px;
+	margin-top: 100px;
+	color: white;
+	text-align: left;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#download_link a{
+	background-color: #ff531a;
+	margin-right: 10px;
+	padding: 10px;
+}
+
+#features_link a{
+	background-color: #002b80;
+	margin-right: 10px;
+	padding: 10px;
+}
+
+a{
+	text-decoration: none;
+	color: #F7F5F5;
+	padding: 10px;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.content{
+	text-align: center;
+	margin: 100px;
+}
+
+.content_info{
+	display: flex;
+	margin-top: 50px;
+}
+
+.info{
+	flex: 50%;
+	text-align: left;
+	margin-left: 100px;
+}
+
+.info h2{
+	margin-bottom: 10px;
+}
+
+.info p{
+	margin-top: 0;
+	color: #a6a6a6;
+}
+
+.heading h1{
+	color: #3385ff;
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+.heading p{
+	margin: 0;
+	color: #a6a6a6;
+}
+
+#city_temp_img{
+	text-align: center;
+}
+
+#city_temp_img img{
+	width: 80%;
+}
+
+.screenshots_img{
+	margin-top: 100px;
+	display: flex;
+}
+
+.screenshots_info{
+	flex: 50%;
+}
+
+.screenshots_info h2{
+	font-size: 40px;
+}
+
+.screenshots_info p{
+	font-size: 30px;
+	margin: 0;
+	color: #a6a6a6;
+}
+
+.img_info{
+	text-align: left;
+}
+
+.reviews1, .reviews2, .bottom{
+	display: flex;
+}
+
+.review{
+	flex: 50%;
+	text-align: left;
+	margin-left: 80px;
+}
+
+.bottom{
+	background-color: #4d79ff;
+	text-align: center;
+	color: white;
+}
+
+.download_info{
+	flex: 50%;
+	margin-top: 50px;
+}
+
+.download_info img{
+	margin-top: 50px;
+}
+
+.footer{
+	background-color: #00001a;
+}
+
+.footer_info{
+	color: white;
+	display: flex;
+	height: 50px;
+	margin:0;
+}
+
+.footer_logo_img{
+	margin-top: 20px;
+}
+
+#copyright{
+	color: white;
+	text-align: center;
+}
