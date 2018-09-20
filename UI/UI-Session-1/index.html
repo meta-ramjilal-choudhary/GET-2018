@@ -2,174 +2,247 @@
 <html>
 <head>
 	<title> Weather App </title>
+	<!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
 </head>
 <body>
-	<div class="weather">
-		<div class="header">
-			<span id="logo_title">LOGO TITLE</span>
-			<span>
-				<a href="index.html">Home</a>
-				<a href="features.html">Features</a>
-				<a href="reviews.html">Reviews</a>
-				<a href="download.html">Download</a>
-				<a href="https://www.facebook.com/"><img src="icons/fb.png" alt="fb" height="15px"/></a>
-				<a href="https://www.instagram.com/?hl=en"><img src="icons/insta.jpg" alt="google" height="15px"/></a>
-				<a href="https://www.google.com/"><img src="icons/google.png" alt="google" height="15px"/></a>
-			</span>
+	<div id="main" style="width: 100%">
+		<div id="cover-page">
+			<img src="images/homebg.png" alt="cover-image" id="cover-image">
+			<header id="menu">
+				<div class="menu-item">
+					<p id="logo-title">LOGO TITLE</p>
+				</div>
+				<div class="menu-item">
+						<a href="index.html" id="home-page-link">Home</a>
+						<a href="features.html" id="features-page-link">Features</a>
+						<a href="reviews.html" id="reviews-page-link">Reviews</a>
+						<a href="download.html" id="download-page-link">Download</a>
+				</div>
+				<div class="menu-item">
+						<a href="https://www.facebook.com/" id="fb-login-link"><img src="icons/fb.png" alt="fb" height="15px"/></a>
+						<a href="https://www.instagram.com/?hl=en" id="google-login-page"><img src="icons/insta.png" alt="google" height="15px"/></a>
+						<a href="https://www.google.com/" id="insta-login-page"><img src="icons/google.png" alt="google" height="15px"/></a>
+				</div>
+			</header>
+			<div id="home">
+				<div class="cover cover-text">
+					<div class="cover-item">
+						<div class="cover-text">
+							Get the most fun weather app
+						</div>
+					</div>
+					<div class="cover-item">
+						<div class="cover-button">
+							<div class="button">
+								<form id="download-button-form" action="download.html">
+									<input type="submit" name="download" value="Download" id="download-button">
+								</form>
+							</div>
+							<div class="button">
+								<form id="features-button-form" action="features.link">
+									<input type="submit" name="features" value="Features" id="features-button">
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="cover">
+					<img src="images/phone1.png" alt="phone1" id="cover-image"/>
+				</div>
+			</div>
 		</div>
-		<div class="cover">
-			<h1 id="cover_heading">Get the most fun <br/> weather app</h1>
-			<div id="download">
-				<a href="download.html">Download</a>
+		<div id="features">
+			<div class="header">
+				<h1 class="header-title">Perfect Features</h1>
+				<p class="header-subtitle">Only necessary</p>
 			</div>
-			<div id="features">
-				<a href="features.html">Features</a>
-			</div>
-			<div class="app_image">
-				<img src="images/phone1.png" alt="phone1" />
+			<div class="features-type">
+				<div class="feature">
+					<div class="feature-image">
+						<img src="images/feature.jpg" alt="feature1" id="feature1-image" width="50px">
+					</div>
+					<div class="feature-info">
+						<h2 class="feature-title">Usability</h2>
+						<p class="feature-description">
+							Sometimes the simplest things are  
+							the hardest to find. So we created 
+							a new  line for everyday life
+						</p>
+					</div>
+				</div>
+				<div class="feature">
+					<div class="feature-image">
+						<img src="images/feature.jpg" alt="feature2" id="feature2-image" width="50px">
+					</div>
+					<div class="feature-info">
+						<h2 class="feature-title">Parallax Effect</h2>
+						<p class="feature-description">
+							Sometimes the simplest things are 
+							the hardest to find. So we created 
+							a new  line for everyday life
+						</p>
+					</div>
+				</div>
+				<div class="feature">
+					<div class="feature-image">
+						<img src="images/feature.jpg" alt="feature3" id="feature3-image" width="50px">
+					</div>
+					<div class="feature-info">
+						<h2 class="feature-title">Unlimits Colors</h2>
+						<p class="feature-description">
+							Sometimes the simplest things are  
+							the hardest to find. So we created 
+							a new  line for everyday life
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="content">
-			<div class="heading">
-				<h1>Perfect Features</h1>
-				<p>Only necessary</p>
+		<div>
+			<img src="images/test1.png" alt="text1" id="city-temp-img">
+		</div>
+		<div id="screenshots">
+			<div class="header">
+				<h1 class="header-title">Screenshots</h1>
+				<p class="header-subtitle">The brightest images</p>
 			</div>
-			<div class="info">
-				<h2>Usability</h2>
-				<p>
-					Sometimes the simplest things are <br/> 
-					the hardest to find. So we created <br/>
-					a new  line for everyday life
+			<div class="screenshot">
+				<div class="screenshot-image">
+					<img src="images/screen01.png" alt="screen01" id="screenshot1-image">
+				</div>
+				<div class="screenshot-info">
+					<div class="screenshot-info-image">
+						<img src="images/cloud1.png" alt="cloud1" id="cloud-image">
+					</div> 
+					<div class="screenshot-info-header">
+						<h2 class="screenshot-info-header-title">When the clouds</h2>
+						<p class="screenshot-info-header-description">
+							Variable information on the air humidity, the 
+							feeling of the weather, and the ability to share this 
+							with your friends
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="screenshot">
+				<div class="screenshot-info">
+					<div class="screenshot-info-image">
+						<img src="images/sun1.png" alt="sun1" id="sun-image"> 
+					</div>
+					<div class="screenshot-info-header">
+						<h2 class="screenshot-info-header-title">When the sun</h2>
+						<p class="screenshot-info-header-description">
+							Variable information on the air humidity, the
+							feeling of the weather, and the ability to share this
+							with your friends
+						</p>
+					</div>
+				</div>
+				<div class="screenshot-image">
+					<img src="images/screen02.png" alt="screen02" id="screenshot2-image">
+				</div>
+			</div>
+			<div class="screenshot">
+				<div class="screenshot-image">
+					<img src="images/screen03.png" alt="screen03" id="screenshot3-image">
+				</div>
+				<div class="screenshots-info">
+					<div class="screenshot-info-image">
+						<img src="images/rainy1.png" alt="rainy1" id="rainy-image">
+					</div>
+					<div class="screenshot-info-header">
+						<h2 class="screenshot-info-header-title">When the clouds</h2>
+						<p class="screenshot-info-header-description">
+							Variable information on the air humidity, the 
+							feeling of the weather, and the ability to share this 
+							with your friends
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="reviews">
+			<div class="header">
+				<h1 class="header-title">What reviews are saying</h1>
+				<p class="header-subtitle">Reviews</p>
+			</div>
+			<div class="review-info">
+				<div class="review">
+					<h2 class="review-comment">
+						What art offers is space -a certain breating
+						room of the spirit.
+					</h2>
+					<p class="review-author">John Updike</p>
+				</div>
+				<div class="review">
+					<h2 class="review-comment">
+						Who do not see nature with our eyes, but with our
+						understandings and our hearts.
+					</h2>
+					<p class="review-author">william Hazlitt</p>
+				</div>
+				<div class="review">
+					<h2 class="review-comment">
+						The only courage that matters is the kind that
+						gets you from one moment to the next.
+					</h2>
+					<p class="review-author">Mignon McLaughlin</p>
+				</div>
+				<div class="review">
+					<h2 class="review-comment">
+						No man has a good enough memory to be a
+						successful liar.
+					</h2>
+					<p class="review-author">Abraham Lincoln</p>
+				</div>
+			</div>
+		</div>
+		<div id="download-app">
+			<div class="download-app-info">
+				<h1 class="download-app-header">How Download the app?</h1>
+				<p class="download-app-description">
+					Just download the app from the store. Simple, 
+					nice and user-friendly application of 
+					the weather. only relevant  and useful 
+					information.
 				</p>
 			</div>
-			<div class="info">
-				<h2>Parallax Effect</h2>
-				<p>
-					Sometimes the simplest things are <br/> 
-					the hardest to find. So we created <br/>
-					a new  line for everyday life
-				</p>
-			</div>
-			<div class="info">
-				<h2>Unlimits Colors</h2>
-				<p>
-					Sometimes the simplest things are <br/> 
-					the hardest to find. So we created <br/>
-					a new  line for everyday life
-				</p>
-			</div>
-		</div>
-		<div id="city_temp_img">
-			<img src="images/test1.png" alt="text1">
-		</div>
-		<div class="content">
-			<div class="heading">
-				<h1>Screenshots</h1>
-				<p>The brightest images</p>
-			</div>
-			<div class="screenshots_img">
-				<div class="image">
-					<img src="images/screen01.png" alt="screen01">
+			<div class="download-app-links">
+				<div class="app-link">
+					<a href="apple_app.com" id="apple-app-store"><img src="images/appstor.png" alt="applestore" id="applestore-logo"></a>
 				</div>
-				<div class="img_info">
-					<img src="images/cloud1.png" alt="cloud1"> <br/>
-					<h2>When the clouds</h2>
-					<p>
-						Variable information on the air humidity, the <br/>
-						feeling of the weather, and the ability to share this <br/>
-						with your friends
-					</p>
+				<div class="app-link">
+					<a href="googlepaly.com" id="google-app-store"><img src="images/googleplay.png" alt="googleplay" id="googleplay-logo"></a>
 				</div>
 			</div>
-			<div class="screenshots_img">
-				<div class="img_info">
-					<img src="images/sun1.png" alt="sun1"> <br/>
-					<h2>When the sun</h2>
-					<p>
-						Variable information on the air humidity, the <br/>
-						feeling of the weather, and the ability to share this <br/>
-						with your friends
-					</p>
-				</div>
-				<div class="image">
-					<img src="images/screen02.png" alt="screen01">
-				</div>
-			</div>
-			<div class="screenshots_img">
-				<div class="image">
-					<img src="images/screen03.png" alt="screen01">
-				</div>
-				<div class="img_info">
-					<img src="images/cloud1.png" alt="cloud1"> <br/>
-					<h2>When the rains</h2>
-					<p>
-						Variable information on the air humidity, the <br/>
-						feeling of the weather, and the ability to share this <br/>
-						with your friends
-					</p>
-				</div>
+			<div class="download-app-image">
+				<img src="images/appdownload1.png" alt="appdownload1" id="appdownload-image">
 			</div>
 		</div>
-		<div class="content">
-			<div class="heading">
-				<h1>What reviews are saying</h1>
-				<p>Reviews</p>
+		<footer id="footer">
+			<div class="menu footer-menu">
+				<div class="menu-item">
+					<img src="images/footer-logo.png" alt="footer-logo" id="footer-logo-img">
+				</div>
+				<div class="menu-item">
+						<a href="index.html" id="home-page-link">Home</a>
+						<a href="features.html" id="features-page-link">Features</a>
+						<a href="reviews.html" id="reviews-page-link">Reviews</a>
+						<a href="download.html" id="download-page-link">Download</a>
+				</div>
+				<div class="menu-item">
+						<a href="https://www.facebook.com/" id="fb-login-link"><img src="icons/fb.png" alt="fb" height="15px"/></a>
+						<a href="https://www.instagram.com/?hl=en" id="google-login-page"><img src="icons/insta.png" alt="google" height="15px"/></a>
+						<a href="https://www.google.com/" id="insta-login-page"><img src="icons/google.png" alt="google" height="15px"/></a>
+				</div>
 			</div>
-			<div class="review">
-				<h2 class="review_text">
-					What art offers is space -a certain breating<br/>
-					room of the spirit.
-				</h2>
-				<p>John Updike</p>
+			<div>
+				<img src="images/downloadbg.png" alt="downloadbg" width="100%" align="center" id="downloadbg-image">
 			</div>
-			<div class="review">
-				<h2 class="review_text">
-					Who do not see nature with our eyes, but with our<br/>
-					understandings and our hearts.
-				</h2>
-				<p>william Hazlitt</p>
+			<div>
+				<p id="copyright"> &copy; All Rights Reserved </p>
 			</div>
-			<div class="review">
-				<h2 class="review_text">
-					The only courage that matters is the kind that<br/>
-					gets you from one moment to the next.
-				</h2>
-				<p>Mignon McLaughlin</p>
-			</div>
-			<div class="review">
-				<h2 class="review_text">
-					No man has a good enough memory to be a<br/>
-					successful liar.
-				</h2>
-				<p>Abraham Lincoln</p>
-			</div>
-		</div>
-		<div class="bottom">
-			<h1>How Download the app?</h1>
-			<p>
-				Just download the app from the store. Simple, <br/>
-				nice and user-friendly application of <br/>
-				the weather. only relevant  and useful <br/>
-				information.
-			</p>
-			<img src="images/appstor.png" alt="applestore">
-			<img src="images/googleplay.png" alt="googleplay">
-			<img src="images/appdownload1.png" alt="appdownload1">
-		</div>
-		<div class="footer">
-			<img src="images/footer-logo.png" alt="footer-logo">
-			<span>
-				<a href="index.html">Home</a>
-				<a href="features.html">Features</a>
-				<a href="reviews.html">Reviews</a>
-				<a href="download.html">Download</a>
-				<a href="https://www.facebook.com/"><img src="icons/fb.png" alt="fb" height="15px"/></a>
-				<a href="https://www.instagram.com/?hl=en"><img src="icons/insta.jpg" alt="google" height="15px"/></a>
-				<a href="https://www.google.com/"><img src="icons/google.png" alt="google" height="15px"/></a>
-			</span>
-			<img src="images/bodybg.png" alt="bodybg">
-			<p id="copyright"> &copy; All Rights Reserved </p>
-		</div>
+		</footer>
 	</div>
 </body>
 </html>
