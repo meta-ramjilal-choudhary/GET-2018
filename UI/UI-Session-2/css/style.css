@@ -6,32 +6,35 @@ body{
 	background-image: url("../images/bodybg.png");
 }
 
-.cover_page{
+#cover-page{
 	background-image: url("../images/homebg.png");
+	background-size: cover;
 }
 
-
-.header{
+#menu{
 	color: white;
 	display: flex;
 }
 
-.menu_bar{
+.menu-item{
 	flex: 50%;
 	height: 130px;
 	float: left;
 	text-align: center;
+	padding: 20px;
+}
+
+#home{
+	display: flex;
+	justify-content: space-between;
 }
 
 .cover{
-	display: flex;
-}
-
-.cover1{
 	flex: 50%;
 }
 
-.heading_text{
+
+.cover-text{
 	margin: 0;
 	margin-left: 200px;
 	font-size: 60px;
@@ -40,25 +43,25 @@ body{
 	font-family: "Times New Roman", Times, serif;
 }
 
-.link{
-	margin: 0;
+.cover-button{
 	margin-left: 200px;
-	margin-top: 100px;
-	color: white;
-	text-align: left;
-	font-family: "Times New Roman", Times, serif;
+	margin-top: 50px;
+	display: flex;
 }
 
-#download_link a{
-	background-color: #ff531a;
-	margin-right: 10px;
-	padding: 10px;
+.download-button{
+	background-color: #FF6037;
+	padding: 15px;
 }
 
-#features_link a{
-	background-color: #002b80;
-	margin-right: 10px;
-	padding: 10px;
+.features-button{
+	margin-left: 20px;
+	background-color: #000099;
+	padding: 15px;
+}
+
+#cover-image{
+	height: 85%;
 }
 
 a{
@@ -68,114 +71,158 @@ a{
 	font-family: "Times New Roman", Times, serif;
 }
 
-.content{
+#features{
 	text-align: center;
 	margin: 100px;
 }
 
-.content_info{
+.features-type{
 	display: flex;
 	margin-top: 50px;
 }
 
-.info{
+.feature{
 	flex: 50%;
 	text-align: left;
 	margin-left: 100px;
+	display: flex;
 }
 
-.info h2{
-	margin-bottom: 10px;
+.feature-info{
+	margin-left: 20px;
 }
 
-.info p{
-	margin-top: 0;
-	color: #a6a6a6;
+.feature-image{
+	margin-top: 20px;
 }
 
-.heading h1{
-	color: #3385ff;
-	margin: 0;
-	margin-bottom: 10px;
+.header-title{
+	color: #1a53ff;
 }
 
-.heading p{
-	margin: 0;
-	color: #a6a6a6;
+.header-subtitle, .feature-description{
+	color: #bfbfbf;
 }
-
-#city_temp_img{
+h2.feature-title{
+	margin-bottom: 0;
+}
+p.feature-description{
+	margin-top: 5px;
+}
+.city-temp-image{
 	text-align: center;
 }
 
-#city_temp_img img{
-	width: 80%;
-}
-
-.screenshots_img{
+.screenshot{
 	margin-top: 100px;
 	display: flex;
 }
 
-.screenshots_info{
+.screenshot1, .screenshot2, .screenshot3{
 	flex: 50%;
 }
 
-.screenshots_info h2{
-	font-size: 40px;
+.header{
+	text-align: center;
 }
 
-.screenshots_info p{
+#screenshot1-image,
+#screenshot3-image,
+#screenshot2-image{
+	margin-left: 200px;
+}
+
+#cloud-image,
+#sun-image,
+#rainy-image{
+	margin-top: 100px;
+}
+
+.screenshot-info-header-description{
+	width: 50%;
+	font-size: 20px;
+	color: #737373;
+}
+
+.screenshot-info-header-title{
 	font-size: 30px;
-	margin: 0;
-	color: #a6a6a6;
 }
 
-.img_info{
-	text-align: left;
+#sun-image, 
+#sun-header,
+#sun-desc{
+	margin-left: 300px;
 }
 
-.reviews1, .reviews2, .bottom{
+.header{
+	margin-top: 100px;
+}
+
+.review-info{
+	margin-top: 100px;
 	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
 }
 
 .review{
 	flex: 50%;
-	text-align: left;
-	margin-left: 80px;
 }
 
-.bottom{
-	background-color: #4d79ff;
-	text-align: center;
-	color: white;
+.review-comment, .review-author{
+	margin-left: 100px;
+	margin-right: 100px;
 }
 
-.download_info{
-	flex: 50%;
-	margin-top: 50px;
-}
-
-.download_info img{
-	margin-top: 50px;
-}
-
-.footer{
-	background-color: #00001a;
-}
-
-.footer_info{
-	color: white;
+#download-application{
+	margin-top: 100px;
 	display: flex;
-	height: 50px;
-	margin:0;
+	background-color: navy;
 }
 
-.footer_logo_img{
-	margin-top: 20px;
+.download-app{
+	flex: 50%;
+}
+
+.download-app-header{
+	margin-top: 100px;
+}
+
+.download-app-info{
+	margin-left: 100px;
+	color: white;
+}
+#apple-app-store{
+	padding: 0;
+}
+
+.download-app-description{
+	width: 45%;
+}
+
+#appdownload-image{
+	width: 80%;
+	margin-top: 100px;
+}
+
+#footer{
+	background-color: #141439;
+}
+
+.footer-menu{
+	display: flex;
+	height: 100px;
+}
+
+.footer-menu-item{
+	flex: 50%;
+	float: left;
+	text-align: center;
+	padding: 20px;
 }
 
 #copyright{
 	color: white;
 	text-align: center;
 }
+
