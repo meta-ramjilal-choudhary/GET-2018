@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Job Detail</title>
+    
+</head>
+<body>
+<div class="container">
+    <div>
+        <h2>All Job Details</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Date of Joining</th>
+                <th>Total exp</th>
+                <th>Job title</th>
+                <th>Reporting manager</th>
+                <th>Team lead</th>
+                <th>Current Project</th>
+            </tr>
+            <tr th:each="jobDetail : ${jobDetails}">
+                <td th:text="${jobDetail.date_of_joining}"></td>
+                <td th:text="${jobDetail.total_exp}"></td>
+                <td><a th:href="${'jobtitles/edit?id=' + jobDetail.job_code}" >Job Description</a></td>
+                <td><a th:href="${'../employees/edit?id=' + jobDetail.reporting_mgr}" >Reporting manager</a></td>
+                <td><a th:href="${'../employees/edit?id=' + jobDetail.team_lead}" >Team lead</a></td>
+                <td><a th:href="${'projects/edit?id=' + jobDetail.curr_proj_id}" >Current Project</a></td>
+            </tr>
+        </table>
+         <p> <a th:href="@{/admin/projects/add}"> Add Project </a> </p>
+    </div>
+</div>
+</body>
+</html>

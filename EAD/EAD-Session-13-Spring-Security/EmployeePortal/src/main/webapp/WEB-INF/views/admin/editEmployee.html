@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>Edit Emplloyee Details</title>
+
+</head>
+<body>
+	<div>
+		<form th:object="${employee}" th:action="@{../employees}" method="post">
+			<input type="hidden"  th:field="*{employeeCode}" />
+			<br>
+			<label> First Name </label>
+			<input type="text" th:field="*{firstName}" />
+			<br>
+			<br>
+			<label> Middle Name </label>
+			<input type="text" th:field="*{middleName}" />
+			<br>
+			<br>
+			<label> Last Name </label>
+			<input type="text" th:field="*{lastName}" />
+			<br>
+			<br>
+			<label> DOB </label>
+			<input type="text" th:field="*{dob}" />
+			<br>
+			<br>
+			<label> Gender </label>
+			<input type="text" th:field="*{gender}" />
+			<br>
+			<br>
+			<label> Primary Contact No. </label>
+			<input type="text" th:field="*{primaryContactNo}" />
+			<br>
+			<br>
+			<label> Secondary Contact No. </label>
+			<input type="text" th:field="*{secondaryContactNo}" />
+			<br>
+			<br>
+			<label> Email </label>
+			<input type="text" th:field="*{emailId}" />
+			<br>
+			<br>
+			<label> Skype Id </label>
+			<input type="text" th:field="*{skypeId}" />
+			<br>
+			<br>
+			<label> Profile Pic Url </label>
+			<input type="text" th:field="*{profilePicture}" />
+			<br>
+			<br>
+			<label> Password </label>
+			<input type="password" th:field="*{password}" />
+			<br>
+			<br>
+			<label> Enabled </label>
+			<input type="text" th:field="*{enabled}" />
+			<br>
+			<button type="submit" class="btn btn-primary">Save</button>
+
+		</form>
+	</div>
+</body>
+</html>

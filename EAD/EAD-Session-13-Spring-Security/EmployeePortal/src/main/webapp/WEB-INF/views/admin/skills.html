@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>skills</title>
+    
+</head>
+<body>
+<div class="container">
+    <div>
+        <h2>All skills</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="skill : ${skills}">
+                <td th:text="${skill.skillId}">Id</td>
+                <td th:text="${skill.skillName}">Name</td>
+                <td><a th:href="${'skills/edit?id=' + skill.skillId}" >Edit</a></td>
+                <td><a th:href="${'skills/delete?id=' + skill.skillId}" >Delete</a></td>
+            </tr>
+        </table>
+        <p> <a th:href="@{/admin/skills/add}"> Add Skill </a> </p>
+    </div>
+</div>
+</body>
+</html>
