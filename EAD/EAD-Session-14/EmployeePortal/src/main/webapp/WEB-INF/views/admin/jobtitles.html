@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Job title</title>
+    
+</head>
+<body>
+<div class="container">
+    <div>
+        <h2>All Job Titles</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Job code</th>
+                <th>Job title</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="jobtitle : ${jobtitles}">
+                <td th:text="${jobtitle.jobCode}">Job code</td>
+                <td th:text="${jobtitle.jobTitle}">Job Title</td>
+                <td><a th:href="${'jobtitles/edit?id=' + jobtitle.jobCode}" >Edit</a></td>
+                <td><a th:href="${'jobtitles/delete?id=' + jobtitle.jobCode}" >Delete</a></td>
+            </tr>
+        </table>
+        <p> <a th:href="@{/admin/jobtitles/add}"> Add Job title </a> </p>
+    </div>
+</div>
+</body>
+</html>
