@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Circle Canvas</title>
+	<script type="text/javascript">
+		function draw_circle(){
+			var canvas = document.getElementById('circle');
+			var context = canvas.getContext("2d");
+			var myFalse = new Boolean(false);
+
+			context.fillStyle = "#F38C2B";
+			context.arc(150,50,40, 0, 2 * Math.PI);
+			context.fill();
+
+			context.fillStyle = "white";
+			context.fillRect(120, 40, 60, 20);
+
+			context.fillStyle = "white";
+			context.fillRect(140, 20, 20, 60);
+		}
+	</script>
+</head>
+<body onload="draw_circle()">
+	<canvas id="circle" width="200" height="200">Your browser does not support HTML5 canvas</canvas>
+</body>
+</html>

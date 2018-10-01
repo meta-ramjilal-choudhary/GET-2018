@@ -1,0 +1,90 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+    background-color: #ababab;
+    font-weight: bold;
+}
+* {
+	box-sizing: border-box;
+}
+
+#contact-form{
+	margin: auto;
+    width: 50%;
+    text-align: right;
+}
+
+.input-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+input:invalid {
+  border: 1px solid #ff4d4d;
+}
+
+input:valid {
+  border: 1px solid green;
+}
+
+select:invalid{
+    border: 1px solid #ff4d4d;
+}
+
+select:valid{
+    border: 1px solid green;
+}
+
+.icon {
+    padding: 10px;
+    background: #d9d9d9;
+    color: black;
+    min-width: 50px;
+    text-align: center;
+}
+
+.input-field {
+    width: 50%;
+    padding: 10px;
+    outline: none;
+}
+
+.input-field:focus {
+    border: 2px solid dodgerblue;
+}
+
+.label{
+	width: 30%;
+	padding: 10px;
+}
+
+#state{
+	width: 100%;
+}
+
+.radio-button, .text-area{
+	width: 57%;
+    padding: 10px;
+    padding-left: 0;
+    outline: none;
+    text-align: left;
+}
+
+/* Set a style for the submit button */
+.btn {
+    background-color: #ff751a;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    opacity: 0.9; 
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+#send{
+	text-align: center;
+}

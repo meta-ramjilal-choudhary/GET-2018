@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact Us Today!</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+<body>
+	<div id="main">
+		<p id="contact">Contact Us Today!</p>
+		<form id="contact-form" action="#">
+			<div class="input-container">
+				<label class="label">First Name</label>
+				<i class="fa fa-user icon"></i>
+				<input class="input-field" type="text" placeholder="Username" name="first-name" 
+					required pattern="[A-Za-z]{2,}" title="First Name should contain atleast 2 letters">
+			</div>
+
+			<div class="input-container">
+				<label class="label">Last Name</label>
+				<i class="fa fa-user icon"></i>
+				<input class="input-field" type="text" placeholder="Username" name="last-name"
+					pattern="[A-Za-z]{1,}" title="Last Name should contain atleast 2 letters">
+			</div>
+
+			<div class="input-container">
+				<label class="label">Email</label>
+				<i class="fa fa-envelope icon"></i>
+				<input class="input-field" type="text" placeholder="Email" name="email"
+					required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" 
+					title="Please insert a valid email">
+			</div>
+
+			<div class="input-container">
+				<label class="label">Phone #</label>
+				<i class="fa fa-phone icon"></i>
+				<input class="input-field" type="text" placeholder="9988776655" name="phone"
+					required pattern="[0-9]{10}" title="please insert valid phone number">
+			</div>
+
+			<div class="input-container">
+				<label class="label">Adress</label>
+				<i class="fa fa-home icon"></i>
+				<input class="input-field" type="text" placeholder="Address" name="address">
+			</div>
+
+			<div class="input-container">
+				<label class="label">City</label>
+				<i class="fa fa-home icon"></i>
+				<input class="input-field" type="text" placeholder="City" name="city"
+					required pattern="[A-Za-z]{2,}">
+			</div>
+
+			<div class="input-container">
+				<label class="label">State</label>
+				<i class="fa fa-list-ul icon"></i>
+				<select class="input-field" required>
+					<option value="">Please Select a State</option> 
+					<option value="rajasthan">Rajasthan</option>
+					<option value="tamilnadu">Tamilnadu</option>
+					<option value="kerala">Kerala</option>
+					<option value="madhya pradesh">Madhya Pradesh</option>
+				</select>
+			</div>
+
+			<div class="input-container">
+				<label class="label">Zip Code</label>
+				<i class="fa fa-home icon"></i>
+				<input class="input-field" type="text" placeholder="Zip Code" name="zip-code"
+					required pattern="[0-9]{6}">
+			</div>
+
+			<div class="input-container">
+				<label class="label">Website or domain name</label>
+				<i class="fa fa-globe-asia icon"></i>
+				<input class="input-field" type="text" placeholder="https://example.com" name="website"
+					required pattern="https?://.+">
+			</div>
+
+			<div class="input-container">
+				<label class="label">Do you have hosting?</label>
+				<div class="radio-button">
+					<input type="radio" name="yes" value="yes" checked> Yes <br />
+					<input type="radio" name="no" value="no"> No
+				</div>
+			</div>
+
+			<div class="input-container">
+				<label class="label">Project Description</label>
+				<i class="fa fa-pen icon"></i>
+				<textarea class="input-field">Project Description</textarea>
+			</div>
+			<div id="send">
+				<button type="submit" class="btn">Send <i class="fa fa-location-arrow"></i></button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
