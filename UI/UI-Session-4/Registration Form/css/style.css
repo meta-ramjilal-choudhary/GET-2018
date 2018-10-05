@@ -19,19 +19,19 @@ body {
     margin-bottom: 15px;
 }
 
-input:invalid {
+input:focus:invalid {
   border: 1px solid #ff4d4d;
 }
 
-input:valid {
+input:focus:valid {
   border: 1px solid green;
 }
 
-select:invalid{
+select:focus:invalid{
     border: 1px solid #ff4d4d;
 }
 
-select:valid{
+select:focus:valid{
     border: 1px solid green;
 }
 
