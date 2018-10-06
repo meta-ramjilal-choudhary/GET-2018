@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact Us Today!</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<script src="script/app.js"></script>
+</head>
+<body>
+	<div id="main">
+		<p id="contact">Contact Us Today!</p>
+		<form id="contact-form" action="profile.html">
+			<div class="input-container">
+				<label class="label">First Name</label>
+				<i class="fa fa-user icon"></i>
+				<input class="input-field" type="text" placeholder="first name" name="first-name" id="first-name">
+			</div>
+
+			<div class="input-container">
+				<label class="label">Last Name</label>
+				<i class="fa fa-user icon"></i>
+				<input class="input-field" type="text" placeholder="last name" name="last-name" id="last-name">
+			</div>
+
+			<div class="input-container">
+				<label class="label">Email</label>
+				<i class="fa fa-envelope icon"></i>
+				<input class="input-field" type="text" placeholder="Email" name="email" id="email" >
+			</div>
+
+			<div class="input-container">
+				<label class="label">Phone #</label>
+				<i class="fa fa-phone icon"></i>
+				<input class="input-field" type="text" placeholder="9988776655" name="phone" id="phone">
+			</div>
+
+			<div class="input-container">
+				<label class="label">Address</label>
+				<i class="fa fa-home icon"></i>
+				<input class="input-field" type="text" placeholder="Address" name="address" id="address">
+			</div>
+
+			<div class="input-container">
+				<label class="label">City</label>
+				<i class="fa fa-home icon"></i>
+				<input class="input-field" type="text" placeholder="City" name="city" id="city" >
+			</div>
+
+			<div class="input-container">
+				<label class="label">State</label>
+				<i class="fa fa-list-ul icon"></i>
+				<select class="input-field" id="states" name="states" onchange="events()">
+					<option value="">Please Select a State</option> 
+					<option value="rajasthan">Rajasthan</option>
+					<option value="haryana">Haryana</option>
+					<option value="maharastra">Maharastra</option>
+				</select>
+			</div>
+
+			<!-- JS Created DOM  -->
+			
+			<div id="send">
+				<button class="btn" id="send-btn" onclick="return valid()">Send <i class="fa fa-location-arrow"></i></button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
