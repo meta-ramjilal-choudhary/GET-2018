@@ -18,22 +18,6 @@ body {
     width: 100%;
     margin-bottom: 15px;
 }
-/*
-input:invalid {
-  border: 1px solid #ff4d4d;
-}
-
-input:valid {
-  border: 1px solid green;
-}
-
-select:invalid{
-    border: 1px solid #ff4d4d;
-}
-
-select:valid{
-    border: 1px solid green;
-}*/
 
 .icon {
     padding: 10px;
